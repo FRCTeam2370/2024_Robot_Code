@@ -11,8 +11,8 @@ public class Constants {
         public static final int IntakeMotorID = 6;
         public static final int IntakeNoteDetectorChannel = 1;
         public static final int PositionIntakeMotorID = 13;
-        public static final double PositionIntakeMotorUpkP = 0.05;
-        public static final double PositionIntakeMotorDownkP = 0.03;
+        public static final double PositionIntakeMotorUpkP = 0.055;
+        public static final double PositionIntakeMotorDownkP = 0.04;
         public static final double PositionIntakeMotorClosedLoopRamp = 0.5;
     }
 
@@ -23,7 +23,7 @@ public class Constants {
         public static final int ShooterAimMotorID = 1;
         public static final int ShooterNoteDetectorChannel = 0;
         public static final double ShooterClosedLoopRamp = 1;
-        public static final double ShooterAimMotorkP = 0.01;
+        public static final double ShooterAimMotorkP = 0.03;
     }
 
     public class ElevatorConstants{

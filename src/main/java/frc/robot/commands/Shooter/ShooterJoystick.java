@@ -26,9 +26,8 @@ public class ShooterJoystick extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    double shooterOUTSpeed = RobotContainer.driver.getRawAxis(3);
-    ShooterSubsystem.runShooter(shooterOUTSpeed);
-    SmartDashboard.putNumber("Shooter Speed", shooterOUTSpeed);
+    double shooterRotationAngle = RobotContainer.operator.getRawAxis(1);
+    ShooterSubsystem.debugAngle(shooterRotationAngle);
   }
 
   // Called once the command ends or is interrupted.

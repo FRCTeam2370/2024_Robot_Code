@@ -4,21 +4,25 @@
 
 package frc.robot.commands.Shooter;
 
+import edu.wpi.first.wpilibj.simulation.ElevatorSim;
 import edu.wpi.first.wpilibj2.command.Command;
+import frc.robot.subsystems.ElevatorSubsystem;
 import frc.robot.subsystems.ShooterSubsystem;
 
 public class StoreShooter extends Command {
   /** Creates a new AimShooterDown. */
   ShooterSubsystem mShooterSubsystem = new ShooterSubsystem();
+  ElevatorSubsystem mElevatorSubsystem = new ElevatorSubsystem();
   public StoreShooter() {
     // Use addRequirements() here to declare subsystem dependencies.
-    addRequirements(mShooterSubsystem);
+    addRequirements(mShooterSubsystem, mElevatorSubsystem);
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    ShooterSubsystem.aimShooter(5);
+    ElevatorSubsystem.setElevator(0.1);
+    ShooterSubsystem.aimShooter(2);
   }
 
   // Called every time the scheduler runs while the command is scheduled.

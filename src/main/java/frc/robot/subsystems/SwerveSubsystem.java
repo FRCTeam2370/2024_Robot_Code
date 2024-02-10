@@ -1,7 +1,7 @@
 // Copyright (c) FIRST and other WPILib contributors.
 // Open Source Software; you can modify and/or share it under the terms of
 // the WPILib BSD license file in the root directory of this project.
-
+/*
 package frc.robot.subsystems;
 
 import com.ctre.phoenix6.controls.PositionDutyCycle;
@@ -27,7 +27,7 @@ import frc.robot.generated.TunerConstants;
 
 /**
  * Basic simulation of a swerve subsystem with the methods needed by PathPlanner
- */
+ 
 public class SwerveSubsystem extends SubsystemBase {
   private SwerveModule[] modules;
   private SwerveDriveKinematics kinematics;
@@ -181,13 +181,13 @@ public class SwerveSubsystem extends SubsystemBase {
       PositionDutyCycle mPositionDutyCycle = new PositionDutyCycle(0);
       Rotation2d angle = (Math.abs(desiredState.speedMetersPerSecond) <= (TunerConstants.maxSpeed * 0.01) ? lastAngle : desiredState.angle);
 
-      mturnMotor.setControl(mPositionDutyCycle.withPosition(angle.getRotations()));
+      mturnMotor.setControl(mPositionDutyCycle.withPosition(angle.getDegrees()));
       lastAngle = angle;
     }
   }
   /**
    * Basic simulation of a swerve module, will just hold its current state and not use any hardware
-   */
+   
   class SimSwerveModule {
     private SwerveModulePosition currentPosition = new SwerveModulePosition();
     private SwerveModuleState currentState = new SwerveModuleState();
@@ -210,7 +210,7 @@ public class SwerveSubsystem extends SubsystemBase {
 
   /**
    * Basic simulation of a gyro, will just hold its current state and not use any hardware
-   */
+   
   class SimGyro {
     private Rotation2d currentRotation = new Rotation2d();
 
@@ -242,4 +242,4 @@ public class SwerveSubsystem extends SubsystemBase {
     double wheelMPS = (wheelRPM * circumference) / 60;
     return wheelMPS;
   }
-}
+}*/

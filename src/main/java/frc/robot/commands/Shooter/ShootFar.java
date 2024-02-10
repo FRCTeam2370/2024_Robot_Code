@@ -2,49 +2,42 @@
 // Open Source Software; you can modify and/or share it under the terms of
 // the WPILib BSD license file in the root directory of this project.
 
-package frc.robot.commands.Intake;
+package frc.robot.commands.Shooter;
 
 import edu.wpi.first.wpilibj2.command.Command;
-import frc.robot.RobotContainer;
+import frc.robot.subsystems.ElevatorSubsystem;
 import frc.robot.subsystems.IntakeSubsystem;
+import frc.robot.subsystems.ShooterSubsystem;
 
-public class intakeToggle extends Command {
-  /** Creates a new intakeToggle. */
-  private IntakeSubsystem mIntakeSubsystem = new IntakeSubsystem();
-  public intakeToggle() {
+public class ShootFar extends Command {
+  /** Creates a new ShootFar. */
+  ElevatorSubsystem mElevatorSubsystem = new ElevatorSubsystem();
+  ShooterSubsystem mShooterSubsystem = new ShooterSubsystem();
+  IntakeSubsystem mIntakeSubsystem = new IntakeSubsystem();
+  public ShootFar() {
     // Use addRequirements() here to declare subsystem dependencies.
-    addRequirements(mIntakeSubsystem);
+    addRequirements(mElevatorSubsystem, mIntakeSubsystem, mShooterSubsystem);
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    IntakeSubsystem.LowerIntake();
+    ElevatorSubsystem.setElevator(0.1);
+    IntakeSubsystem.setIntakePostition(1.56);
+    ShooterSubsystem.aimShooter(6.4);
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
-  public void execute() {
-    IntakeSubsystem.ForwardIntake();
-  }
+  public void execute() {}
 
   // Called once the command ends or is interrupted.
   @Override
-  public void end(boolean interrupted) {
-    IntakeSubsystem.IntakeMotor.set(0);
-    IntakeSubsystem.RiseIntake();
-  }
+  public void end(boolean interrupted) {}
 
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-   if(IntakeSubsystem.IntakeNoteDetector.getValue() < 1200){//1350 for if the bar on the intake is third from the back
     return true;
-   }else{
-    return false;
-   }
-     
-    
-    
   }
 }

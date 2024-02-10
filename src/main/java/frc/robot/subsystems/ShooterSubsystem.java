@@ -64,6 +64,11 @@ public class ShooterSubsystem extends SubsystemBase {
     aimMotorPID.setReference(position, CANSparkMax.ControlType.kPosition);
   }
 
+  public static void debugAngle(double addToPosition){
+    double position = 0;
+    position += addToPosition / 10;
+    aimMotorPID.setReference(position, CANSparkMax.ControlType.kPosition);
+  }
   public static void resetAimShooterMotor(){
     /*AimMotorConfig.Slot0.kP = Constants.ShooterConstants.ShooterAimMotorkP;
     AimMotorConfig.MotorOutput.PeakForwardDutyCycle = 0.5;
