@@ -1,0 +1,82 @@
+{
+  "version": 1.0,
+  "waypoints": [
+    {
+      "anchor": {
+        "x": 1.8735540604984342,
+        "y": 5.472864279061892
+      },
+      "prevControl": null,
+      "nextControl": {
+        "x": 3.7446187712888244,
+        "y": 6.022489537856569
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 1.7449183616315946,
+        "y": 4.397002070357417
+      },
+      "prevControl": {
+        "x": 2.0840488404623527,
+        "y": 5.168816263558453
+      },
+      "nextControl": null,
+      "isLocked": false,
+      "linkedName": null
+    }
+  ],
+  "rotationTargets": [
+    {
+      "waypointRelativePos": 0.4,
+      "rotationDegrees": -168.67215251827363,
+      "rotateFast": false
+    }
+  ],
+  "constraintZones": [],
+  "eventMarkers": [
+    {
+      "name": "StopAndDropIntake",
+      "waypointRelativePos": 0,
+      "command": {
+        "type": "parallel",
+        "data": {
+          "commands": [
+            {
+              "type": "named",
+              "data": {
+                "name": "StopShooter"
+              }
+            },
+            {
+              "type": "named",
+              "data": {
+                "name": "intakeToggle"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "globalConstraints": {
+    "maxVelocity": 2.0,
+    "maxAcceleration": 2.0,
+    "maxAngularVelocity": 540.0,
+    "maxAngularAcceleration": 720.0
+  },
+  "goalEndState": {
+    "velocity": 0,
+    "rotation": 139.39870535499563,
+    "rotateFast": false
+  },
+  "reversed": false,
+  "folder": "CloseSideFourPieceAuto",
+  "previewStartingState": {
+    "rotation": -179.2151753970081,
+    "velocity": 0
+  },
+  "useDefaultConstraints": false
+}

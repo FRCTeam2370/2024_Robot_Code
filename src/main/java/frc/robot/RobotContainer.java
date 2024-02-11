@@ -179,7 +179,9 @@ public class RobotContainer {
   
   private Command TestAuto = drivetrain.getAutoPath("TestAuto");
   private Command ShootAndBackAway = drivetrain.getAutoPath("ShootAndBackAway");
-
+  private Command CloseSideFourPiece = drivetrain.getAutoPath("CloseSideFourPiece");
+  private Command TheScoot = drivetrain.getAutoPath("TheScoot");
+  private Command CloseSideThreePiece = drivetrain.getAutoPath("CloseSideThreePiece");
 
   public Command getAutonomousCommand() {
     

@@ -2,10 +2,10 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 0.7859976973515199,
-      "y": 4.420390379242297
+      "x": 0.79769185179396,
+      "y": 6.689056341075646
     },
-    "rotation": 119.42745640318972
+    "rotation": -121.5042667192042
   },
   "command": {
     "type": "sequential",
@@ -31,15 +31,9 @@
           }
         },
         {
-          "type": "wait",
+          "type": "path",
           "data": {
-            "waitTime": 1.0
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "StopShooter"
+            "pathName": "ShootAndGetFirstPiece"
           }
         },
         {
@@ -55,7 +49,32 @@
               {
                 "type": "path",
                 "data": {
-                  "pathName": "BackAwayFromSide"
+                  "pathName": "ToSecondPiece"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "parallel",
+          "data": {
+            "commands": [
+              {
+                "type": "named",
+                "data": {
+                  "name": "ShootFar"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "RunShooter"
+                }
+              },
+              {
+                "type": "wait",
+                "data": {
+                  "waitTime": 0.5
                 }
               }
             ]
@@ -64,7 +83,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "BackToScore"
+            "pathName": "ToThirdPiece"
           }
         },
         {
@@ -74,7 +93,7 @@
               {
                 "type": "named",
                 "data": {
-                  "name": "ShootClose"
+                  "name": "ShootFar"
                 }
               },
               {
@@ -82,14 +101,14 @@
                 "data": {
                   "name": "RunShooter"
                 }
+              },
+              {
+                "type": "wait",
+                "data": {
+                  "waitTime": 0.5
+                }
               }
             ]
-          }
-        },
-        {
-          "type": "wait",
-          "data": {
-            "waitTime": 1.0
           }
         },
         {
@@ -111,40 +130,47 @@
               {
                 "type": "path",
                 "data": {
-                  "pathName": "GetSecondPiece"
+                  "pathName": "ToFourthPiece"
                 }
               }
             ]
           }
         },
         {
-          "type": "wait",
+          "type": "parallel",
           "data": {
-            "waitTime": 0.5
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "ShootFar"
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "RunShooter"
-          }
-        },
-        {
-          "type": "wait",
-          "data": {
-            "waitTime": 1.0
+            "commands": [
+              {
+                "type": "named",
+                "data": {
+                  "name": "ShootFar"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "RunShooter"
+                }
+              },
+              {
+                "type": "wait",
+                "data": {
+                  "waitTime": 0.5
+                }
+              }
+            ]
           }
         },
         {
           "type": "named",
           "data": {
             "name": "StopShooter"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "BackOut"
           }
         }
       ]

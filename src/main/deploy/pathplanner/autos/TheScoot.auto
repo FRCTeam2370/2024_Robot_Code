@@ -2,8 +2,8 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 1.4057878828008366,
-      "y": 5.507946742389212
+      "x": 5.264858848806016,
+      "y": 6.958021893251764
     },
     "rotation": 180.0
   },
@@ -14,7 +14,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "Test"
+            "pathName": "THESCOOT"
           }
         }
       ]

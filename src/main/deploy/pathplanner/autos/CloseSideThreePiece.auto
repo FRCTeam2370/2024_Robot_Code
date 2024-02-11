@@ -2,10 +2,10 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 0.7859976973515199,
-      "y": 4.420390379242297
+      "x": 0.77430354290908,
+      "y": 6.548726487766366
     },
-    "rotation": 119.42745640318972
+    "rotation": -122.47119229084848
   },
   "command": {
     "type": "sequential",
@@ -31,15 +31,9 @@
           }
         },
         {
-          "type": "wait",
+          "type": "path",
           "data": {
-            "waitTime": 1.0
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "StopShooter"
+            "pathName": "ShootAndGetFirstPiece"
           }
         },
         {
@@ -55,16 +49,10 @@
               {
                 "type": "path",
                 "data": {
-                  "pathName": "BackAwayFromSide"
+                  "pathName": "GoToSecondPiece"
                 }
               }
             ]
-          }
-        },
-        {
-          "type": "path",
-          "data": {
-            "pathName": "BackToScore"
           }
         },
         {
@@ -74,7 +62,7 @@
               {
                 "type": "named",
                 "data": {
-                  "name": "ShootClose"
+                  "name": "ShootFar"
                 }
               },
               {
@@ -89,13 +77,19 @@
         {
           "type": "wait",
           "data": {
-            "waitTime": 1.0
+            "waitTime": 0.5
           }
         },
         {
-          "type": "named",
+          "type": "path",
           "data": {
-            "name": "StopShooter"
+            "pathName": "GetPieceFromMid"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "ScoreFarPiece"
           }
         },
         {
@@ -105,40 +99,22 @@
               {
                 "type": "named",
                 "data": {
-                  "name": "intakeToggle"
+                  "name": "ShootFar"
                 }
               },
               {
-                "type": "path",
+                "type": "named",
                 "data": {
-                  "pathName": "GetSecondPiece"
+                  "name": "RunShooter"
+                }
+              },
+              {
+                "type": "wait",
+                "data": {
+                  "waitTime": 0.3
                 }
               }
             ]
-          }
-        },
-        {
-          "type": "wait",
-          "data": {
-            "waitTime": 0.5
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "ShootFar"
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "RunShooter"
-          }
-        },
-        {
-          "type": "wait",
-          "data": {
-            "waitTime": 1.0
           }
         },
         {

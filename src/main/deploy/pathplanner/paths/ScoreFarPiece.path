@@ -3,25 +3,25 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 0.7859976973515199,
-        "y": 4.420390379242297
+        "x": 7.381500802887644,
+        "y": 6.583808951093687
       },
       "prevControl": null,
       "nextControl": {
-        "x": 1.359011265025076,
-        "y": 4.280060525932538
+        "x": 6.25886197641341,
+        "y": 5.940630456759489
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 2.446567628177991,
-        "y": 4.1046482092964185
+        "x": 1.8267774427286747,
+        "y": 6.338231707802447
       },
       "prevControl": {
-        "x": 1.8852482149408742,
-        "y": 4.09295405485398
+        "x": 2.5868974814872705,
+        "y": 6.8059978855000445
       },
       "nextControl": null,
       "isLocked": false,
@@ -32,21 +32,21 @@
   "constraintZones": [],
   "eventMarkers": [],
   "globalConstraints": {
-    "maxVelocity": 2.5,
-    "maxAcceleration": 2.5,
+    "maxVelocity": 3.0,
+    "maxAcceleration": 3.0,
     "maxAngularVelocity": 540.0,
     "maxAngularAcceleration": 720.0
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": -177.2736890060938,
+    "rotation": -156.03751102542176,
     "rotateFast": false
   },
   "reversed": false,
-  "folder": "ShootAndBackAwayAuto",
+  "folder": "CloseSideThreePieceAuto",
   "previewStartingState": {
-    "rotation": 120.46554491945989,
+    "rotation": -177.3974377975001,
     "velocity": 0
   },
-  "useDefaultConstraints": false
+  "useDefaultConstraints": true
 }

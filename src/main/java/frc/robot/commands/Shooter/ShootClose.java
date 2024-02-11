@@ -23,7 +23,7 @@ public class ShootClose extends Command {
   @Override
   public void initialize() {
     ElevatorSubsystem.setElevator(0.1);
-    IntakeSubsystem.setIntakePostition(1.4);
+    IntakeSubsystem.setIntakePostition(1.55);
     ShooterSubsystem.aimShooter(2);
   }
 
