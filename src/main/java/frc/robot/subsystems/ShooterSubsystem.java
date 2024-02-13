@@ -56,8 +56,7 @@ public class ShooterSubsystem extends SubsystemBase {
 
   public static void runShooter(double shooterSpeed){
       shooterMotor1.set(shooterSpeed);
-      shooterMotor2.set(shooterSpeed * 1.05);
-    
+      shooterMotor2.set(shooterSpeed);//* 1.05    
   }
 
   public static void aimShooter(double position){
