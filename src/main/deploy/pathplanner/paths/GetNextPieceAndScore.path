@@ -1,0 +1,109 @@
+{
+  "version": 1.0,
+  "waypoints": [
+    {
+      "anchor": {
+        "x": 6.32902690306805,
+        "y": 1.9178413285601514
+      },
+      "prevControl": null,
+      "nextControl": {
+        "x": 7.042370324056887,
+        "y": 1.8242880930206316
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 8.14162084164624,
+        "y": 2.479160741797268
+      },
+      "prevControl": {
+        "x": 8.347090867365583,
+        "y": 2.6052646631615004
+      },
+      "nextControl": {
+        "x": 5.416882856557735,
+        "y": 0.8068966565283563
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 1.6045885083223155,
+        "y": 3.9058475837749405
+      },
+      "prevControl": {
+        "x": 3.3236292113609864,
+        "y": 2.23358349850603
+      },
+      "nextControl": null,
+      "isLocked": false,
+      "linkedName": null
+    }
+  ],
+  "rotationTargets": [
+    {
+      "waypointRelativePos": 0.7,
+      "rotationDegrees": -154.35554537472524,
+      "rotateFast": false
+    }
+  ],
+  "constraintZones": [],
+  "eventMarkers": [
+    {
+      "name": "ReadyShooter",
+      "waypointRelativePos": 1.8,
+      "command": {
+        "type": "parallel",
+        "data": {
+          "commands": [
+            {
+              "type": "named",
+              "data": {
+                "name": "ShootFar"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "IntakeToggle",
+      "waypointRelativePos": 0.2,
+      "command": {
+        "type": "parallel",
+        "data": {
+          "commands": [
+            {
+              "type": "named",
+              "data": {
+                "name": "intakeToggle"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "globalConstraints": {
+    "maxVelocity": 2.0,
+    "maxAcceleration": 2.0,
+    "maxAngularVelocity": 540.0,
+    "maxAngularAcceleration": 720.0
+  },
+  "goalEndState": {
+    "velocity": 0,
+    "rotation": 144.24611274556332,
+    "rotateFast": false
+  },
+  "reversed": false,
+  "folder": "SorceSideAutos",
+  "previewStartingState": {
+    "rotation": 172.69424046668925,
+    "velocity": 0
+  },
+  "useDefaultConstraints": false
+}
