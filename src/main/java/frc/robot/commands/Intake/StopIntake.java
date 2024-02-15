@@ -2,29 +2,24 @@
 // Open Source Software; you can modify and/or share it under the terms of
 // the WPILib BSD license file in the root directory of this project.
 
-package frc.robot.commands.Shooter;
+package frc.robot.commands.Intake;
 
 import edu.wpi.first.wpilibj2.command.Command;
-import frc.robot.subsystems.ElevatorSubsystem;
+import frc.robot.Constants.IntakeConstants;
 import frc.robot.subsystems.IntakeSubsystem;
-import frc.robot.subsystems.ShooterSubsystem;
 
-public class ShootFar extends Command {
-  /** Creates a new ShootFar. */
-  ElevatorSubsystem mElevatorSubsystem = new ElevatorSubsystem();
-  ShooterSubsystem mShooterSubsystem = new ShooterSubsystem();
-  IntakeSubsystem mIntakeSubsystem = new IntakeSubsystem();
-  public ShootFar() {
+public class StopIntake extends Command {
+  /** Creates a new StopIntake. */
+  private IntakeSubsystem mIntakeSubsystem = new IntakeSubsystem();
+  public StopIntake() {
     // Use addRequirements() here to declare subsystem dependencies.
-    addRequirements(mElevatorSubsystem, mIntakeSubsystem, mShooterSubsystem);
+    addRequirements(mIntakeSubsystem);
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    ElevatorSubsystem.setElevator(0.1);
-    IntakeSubsystem.setIntakePostition(0.95);
-    ShooterSubsystem.aimShooter(5.93);
+    IntakeSubsystem.IntakeMotor.set(0);
   }
 
   // Called every time the scheduler runs while the command is scheduled.
@@ -39,6 +34,5 @@ public class ShootFar extends Command {
   @Override
   public boolean isFinished() {
     return true;
-    
   }
 }

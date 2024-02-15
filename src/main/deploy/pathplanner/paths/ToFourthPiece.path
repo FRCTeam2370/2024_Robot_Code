@@ -3,13 +3,13 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 1.7916949794013546,
-        "y": 4.350225452587657
+        "x": 1.8735540604984342,
+        "y": 5.192204572443334
       },
       "prevControl": null,
       "nextControl": {
-        "x": 1.7449183616315946,
-        "y": 4.326837143702777
+        "x": 1.8267774427286743,
+        "y": 5.168816263558454
       },
       "isLocked": false,
       "linkedName": null
@@ -32,12 +32,12 @@
     },
     {
       "anchor": {
-        "x": 1.896942369383314,
-        "y": 4.864768248055015
+        "x": 2.2009903848867527,
+        "y": 4.841379939170135
       },
       "prevControl": {
-        "x": 1.8033891338437946,
-        "y": 4.934933174709655
+        "x": 2.1074371493472333,
+        "y": 4.911544865824775
       },
       "nextControl": null,
       "isLocked": false,
@@ -47,7 +47,7 @@
   "rotationTargets": [
     {
       "waypointRelativePos": 1.0,
-      "rotationDegrees": -158.19859051364816,
+      "rotationDegrees": 155.5560452195834,
       "rotateFast": false
     }
   ],
@@ -61,13 +61,13 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 159.86369657175192,
+    "rotation": 163.30075576600632,
     "rotateFast": false
   },
   "reversed": false,
   "folder": "CloseSideFourPieceAuto",
   "previewStartingState": {
-    "rotation": 145.1755108430431,
+    "rotation": 165.96375653207366,
     "velocity": 0
   },
   "useDefaultConstraints": false

@@ -5,31 +5,25 @@
 package frc.robot.commands.Shooter;
 
 import edu.wpi.first.wpilibj2.command.Command;
-import frc.robot.subsystems.ElevatorSubsystem;
-import frc.robot.subsystems.IntakeSubsystem;
 import frc.robot.subsystems.ShooterSubsystem;
 
-public class ShootFar extends Command {
-  /** Creates a new ShootFar. */
-  ElevatorSubsystem mElevatorSubsystem = new ElevatorSubsystem();
+public class Shoot extends Command {
+  /** Creates a new Shoot. */
   ShooterSubsystem mShooterSubsystem = new ShooterSubsystem();
-  IntakeSubsystem mIntakeSubsystem = new IntakeSubsystem();
-  public ShootFar() {
+  public Shoot() {
     // Use addRequirements() here to declare subsystem dependencies.
-    addRequirements(mElevatorSubsystem, mIntakeSubsystem, mShooterSubsystem);
+    addRequirements(mShooterSubsystem);
   }
 
   // Called when the command is initially scheduled.
   @Override
-  public void initialize() {
-    ElevatorSubsystem.setElevator(0.1);
-    IntakeSubsystem.setIntakePostition(0.95);
-    ShooterSubsystem.aimShooter(5.93);
-  }
+  public void initialize() {}
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
-  public void execute() {}
+  public void execute() {
+    ShooterSubsystem.runShooter(-0.6);
+  }
 
   // Called once the command ends or is interrupted.
   @Override
@@ -39,6 +33,5 @@ public class ShootFar extends Command {
   @Override
   public boolean isFinished() {
     return true;
-    
   }
 }

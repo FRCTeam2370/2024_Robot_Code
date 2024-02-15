@@ -19,6 +19,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import edu.wpi.first.wpilibj2.command.TrapezoidProfileCommand;
 import frc.robot.Constants;
+import frc.robot.commands.Intake.intakeToggle;
 
 public class IntakeSubsystem extends SubsystemBase {
   /** Creates a new IntakeSubsystem. */
@@ -27,31 +28,37 @@ public class IntakeSubsystem extends SubsystemBase {
   public static final TalonFX PositionIntakeMotor = new TalonFX(Constants.IntakeConstants.PositionIntakeMotorID);
   private static PositionDutyCycle IntakeUpDown = new PositionDutyCycle(0);
   private static TalonFXConfiguration IntakePositionconfig = new TalonFXConfiguration();
+  private static double lastIntakePosition; 
   public IntakeSubsystem() {
     resetIntake();
   }
 
   public static void LowerIntake(){
-    PositionIntakeMotor.setNeutralMode(NeutralModeValue.Brake);
+    //PositionIntakeMotor.setNeutralMode(NeutralModeValue.Brake);
     IntakePositionconfig.Slot0.kP = Constants.IntakeConstants.PositionIntakeMotorDownkP;
+    IntakePositionconfig.Slot0.kI = 0; 
     IntakePositionconfig.ClosedLoopRamps.DutyCycleClosedLoopRampPeriod = Constants.IntakeConstants.PositionIntakeMotorClosedLoopRamp;
     PositionIntakeMotor.getConfigurator().apply(IntakePositionconfig);
-    PositionIntakeMotor.setControl(IntakeUpDown.withPosition(13.7));//Change this value when the motor is on the thing
+    PositionIntakeMotor.setControl(IntakeUpDown.withPosition(13.67));//Change this value when the motor is on the thing
   }
 
   public static void RiseIntake(){
-    PositionIntakeMotor.setNeutralMode(NeutralModeValue.Coast);
+    //PositionIntakeMotor.setNeutralMode(NeutralModeValue.Coast);
     IntakePositionconfig.Slot0.kP = Constants.IntakeConstants.PositionIntakeMotorUpkP;
+    IntakePositionconfig.Slot0.kI = 0; 
     IntakePositionconfig.ClosedLoopRamps.DutyCycleClosedLoopRampPeriod = Constants.IntakeConstants.PositionIntakeMotorClosedLoopRamp;
     PositionIntakeMotor.getConfigurator().apply(IntakePositionconfig);
     PositionIntakeMotor.setControl(IntakeUpDown.withPosition(1.4));//Change this value as well
   }
   
   public static void setIntakePostition(double position){
+    double kI = position < PositionIntakeMotor.getPosition().getValueAsDouble() ? 0 : 0.18;
     IntakePositionconfig.Slot0.kP = Constants.IntakeConstants.PositionIntakeMotorUpkP;
-    IntakePositionconfig.ClosedLoopRamps.DutyCycleClosedLoopRampPeriod = Constants.IntakeConstants.PositionIntakeMotorClosedLoopRamp;
+    IntakePositionconfig.Slot0.kI = kI;
+    IntakePositionconfig.ClosedLoopRamps.DutyCycleClosedLoopRampPeriod = 0.01;
     PositionIntakeMotor.getConfigurator().apply(IntakePositionconfig);
     PositionIntakeMotor.setControl(IntakeUpDown.withPosition(position));
+    //lastIntakePosition = PositionIntakeMotor.getPosition().getValueAsDouble();
   }
 
   public static void resetIntake(){

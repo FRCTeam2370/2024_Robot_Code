@@ -23,12 +23,12 @@ public class ShootClose extends Command {
   @Override
   public void initialize() {
     ElevatorSubsystem.setElevator(0.1);
-    IntakeSubsystem.setIntakePostition(1.3);
-    ShooterSubsystem.aimShooter(2);
+    IntakeSubsystem.setIntakePostition(0.8);
+    ShooterSubsystem.aimShooter(1.8);
   }
 
-  // Called every time the scheduler runs while the command is scheduled.
-  @Override
+  // Called every time the scheduler runs  the command is scheduled.
+  @Override 
   public void execute() {}
 
   // Called once the command ends or is interrupted.

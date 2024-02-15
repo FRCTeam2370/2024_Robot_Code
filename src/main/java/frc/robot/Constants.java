@@ -12,7 +12,7 @@ public class Constants {
         public static final int IntakeNoteDetectorChannel = 1;
         public static final int PositionIntakeMotorID = 13;
         public static final double PositionIntakeMotorUpkP = 0.055;
-        public static final double PositionIntakeMotorDownkP = 0.045;
+        public static final double PositionIntakeMotorDownkP = 0.052;
         public static final double PositionIntakeMotorClosedLoopRamp = 0.5;
     }
 

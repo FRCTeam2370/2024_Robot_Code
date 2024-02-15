@@ -26,13 +26,16 @@ import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import edu.wpi.first.wpilibj2.command.button.POVButton;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
 import frc.robot.commands.Elevator.MoveElevator;
+import frc.robot.commands.Intake.FeedIntake;
 import frc.robot.commands.Intake.MoveIntake;
 import frc.robot.commands.Intake.ReverseIntake;
+import frc.robot.commands.Intake.StopIntake;
 import frc.robot.commands.Intake.StoreIntake;
 import frc.robot.commands.Intake.intakeToggle;
 import frc.robot.commands.Shooter.AimShooter;
 import frc.robot.commands.Shooter.RunShooter;
 import frc.robot.commands.Shooter.ScoreAmp;
+import frc.robot.commands.Shooter.Shoot;
 import frc.robot.commands.Shooter.ShootClose;
 import frc.robot.commands.Shooter.ShootFar;
 import frc.robot.commands.Shooter.ShooterIntakeTilSight;
@@ -167,6 +170,9 @@ public class RobotContainer {
     NamedCommands.registerCommand("RunShooter", new RunShooter());
     NamedCommands.registerCommand("StopShooter", new StopShooter());
     NamedCommands.registerCommand("ShootFar", new ShootFar());
+    NamedCommands.registerCommand("FeedIntake", new FeedIntake());
+    NamedCommands.registerCommand("Shoot", new Shoot());
+    NamedCommands.registerCommand("StopIntake", new StopIntake());
     AutoChooser = AutoBuilder.buildAutoChooser();
     
     configureBindings();
@@ -177,7 +183,7 @@ public class RobotContainer {
     //SmartDashboard.putData("Auto mode", autoChooser);
   }
   
-  private Command TestAuto = drivetrain.getAutoPath("TestAuto");
+  private Command TwoPieceAmpSide = drivetrain.getAutoPath("TwoPieceAmpSide");
   private Command ShootAndBackAway = drivetrain.getAutoPath("ShootAndBackAway");
   private Command CloseSideFourPiece = drivetrain.getAutoPath("CloseSideFourPiece");
   private Command TheScoot = drivetrain.getAutoPath("TheScoot");
