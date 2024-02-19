@@ -46,8 +46,8 @@ public class FindDistance extends Command {
     SmartDashboard.putNumber("X Offset", tx);
     if (tv){
       double ty = LimelightHelpers.getTY("");
-      double limelightMountHeight = Constants.OperatorConstants.limelightMountHeight;
-      double limelightMountPitch = Constants.OperatorConstants.limelightMountPitch;
+      double limelightMountHeight = Constants.LimelightConstants.limelightMoundHeight;
+      double limelightMountPitch = Constants.LimelightConstants.limelightMountPitch;
 
       double angleToGoalDegrees = limelightMountPitch + ty;
       double angleToGoalRadians = angleToGoalDegrees * (3.14159 / 180.0);
