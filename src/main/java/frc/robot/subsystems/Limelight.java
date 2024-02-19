@@ -16,7 +16,7 @@ import frc.robot.LimelightHelpers;
 public class Limelight extends SubsystemBase {
   public static boolean tv;
   public static double tx;
-  
+  public static double DistanceFromTarget;
 
   /** Creates a new Limelight. */
   public Limelight() {
@@ -33,7 +33,7 @@ public class Limelight extends SubsystemBase {
   }
 
 
-  public static double FindDistance(){
+  public static void FindDistance(){
       double ty = LimelightHelpers.getTY("");
       double limelightMountHeight = Constants.LimelightConstants.limelightMoundHeight;
       double limelightMountPitch = Constants.LimelightConstants.limelightMountPitch;
@@ -43,8 +43,16 @@ public class Limelight extends SubsystemBase {
 
       double distanceFromTarget = (57.13 - limelightMountHeight) / Math.tan(angleToGoalRadians);
       SmartDashboard.putNumber("Li DistanceFromTarget", distanceFromTarget);
+      DistanceFromTarget = distanceFromTarget;
+      
+  }
 
-      return distanceFromTarget;
+  public static boolean InLongRange(){
+    if(DistanceFromTarget > 80 && DistanceFromTarget < 105){
+      return true;
+    }else{
+      return false;
+    }
   }
 
   public static double txSlowly(){
@@ -59,5 +67,7 @@ public class Limelight extends SubsystemBase {
     tv = LimelightHelpers.getTV("");
 SmartDashboard.putBoolean("Apriltag Visible?", tv);
 SmartDashboard.putNumber("X Offset", tx);
+   FindDistance();
+   SmartDashboard.putBoolean("In Long Range", InLongRange());
   }
 }
