@@ -37,6 +37,12 @@ public class Constants {
         public static final double ClimberkP = 0.1;
         public static final double ClimberClosedLoopRamp = 0.5;
     }
+    public class LimelightConstants{
+        //In inches
+        public static double limelightMoundHeight = 17;
+        //In degrees
+        public static double limelightMountPitch = 15;
 
+    }
 
 }
