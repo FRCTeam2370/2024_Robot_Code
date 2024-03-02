@@ -25,11 +25,11 @@ public class ShooterToggle extends Command {
   @Override
   public void execute() {
    if(RobotContainer.trigger(RobotContainer.driver, 3).getAsBoolean() == true){
-    ShooterSubsystem.runShooter(-0.65);//0.8
+    ShooterSubsystem.runShooter(-80);//0.8
   } else if(RobotContainer.trigger(RobotContainer.driver, 2).getAsBoolean() == true){
-    ShooterSubsystem.runShooter(-0.1);
+    ShooterSubsystem.runShooter(-10);
   } else if(RobotContainer.driver.getPOV() == 270){
-    ShooterSubsystem.runShooter(0.1);
+    ShooterSubsystem.runShooter(10);
   } else {
     ShooterSubsystem.runShooter(0);
   }

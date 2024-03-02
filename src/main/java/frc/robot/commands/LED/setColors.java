@@ -27,7 +27,7 @@ public class setColors extends Command {
       LEDSubsystem.setGreen();
     }else if(RobotContainer.operatorRight.getAsBoolean() == true){
       LEDSubsystem.setRed();
-    }else{
+    }else if(RobotContainer.operatorLeft.getAsBoolean() == true){
       LEDSubsystem.turnOff();
     }
   }
@@ -35,7 +35,7 @@ public class setColors extends Command {
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    LEDSubsystem.turnOff();
+    
   }
 
   // Returns true when the command should end.

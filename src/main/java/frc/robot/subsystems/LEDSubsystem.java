@@ -4,13 +4,18 @@
 
 package frc.robot.subsystems;
 
+import java.util.Optional;
+
 import edu.wpi.first.wpilibj.AddressableLED;
 import edu.wpi.first.wpilibj.AddressableLEDBuffer;
+import edu.wpi.first.wpilibj.DriverStation;
+import edu.wpi.first.wpilibj.DriverStation.Alliance;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class LEDSubsystem extends SubsystemBase {
   public static AddressableLED blinkahs/*In Boston accent/because were going to Massachusetts*/ = new AddressableLED(9);
   private static AddressableLEDBuffer blinkahsBuffer = new AddressableLEDBuffer(42);
+  private static Optional<Alliance> alliance = DriverStation.getAlliance();
   /** Creates a new LEDSubsystem. */
   public LEDSubsystem() {
     startLEDs();
@@ -54,6 +59,27 @@ public class LEDSubsystem extends SubsystemBase {
   public static void turnOff(){
     for(var i = 0; i < blinkahsBuffer.getLength(); i++){
       blinkahsBuffer.setRGB(i, 0, 0, 0);
+    }
+    
+    blinkahs.setData(blinkahsBuffer);
+  }
+
+
+  public static boolean isBlue(){
+    return alliance.get() == DriverStation.Alliance.Blue;
+  }
+
+  public static void setBlue(){
+    for(var i = 0; i < blinkahsBuffer.getLength(); i++){
+      blinkahsBuffer.setRGB(i, 20, 0, 255);
+    }
+    
+    blinkahs.setData(blinkahsBuffer);
+  }
+
+  public static void setPink(){
+    for(var i = 0; i < blinkahsBuffer.getLength(); i++){
+      blinkahsBuffer.setRGB(i, 209, 2, 140);
     }
     
     blinkahs.setData(blinkahsBuffer);

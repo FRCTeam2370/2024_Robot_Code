@@ -55,6 +55,7 @@ public class IntakeSubsystem extends SubsystemBase {
     double kI = position < PositionIntakeMotor.getPosition().getValueAsDouble() ? 0 : 0.18;
     IntakePositionconfig.Slot0.kP = Constants.IntakeConstants.PositionIntakeMotorUpkP;
     IntakePositionconfig.Slot0.kI = kI;
+    IntakePositionconfig.Slot0.kV = 0.03;
     IntakePositionconfig.ClosedLoopRamps.DutyCycleClosedLoopRampPeriod = 0.01;
     PositionIntakeMotor.getConfigurator().apply(IntakePositionconfig);
     PositionIntakeMotor.setControl(IntakeUpDown.withPosition(position));
@@ -62,7 +63,7 @@ public class IntakeSubsystem extends SubsystemBase {
   }
 
   public static void resetIntake(){
-    PositionIntakeMotor.setNeutralMode(NeutralModeValue.Coast);
+    PositionIntakeMotor.setNeutralMode(NeutralModeValue.Brake);
     PositionIntakeMotor.setPosition(0);
   }
 
@@ -83,6 +84,7 @@ public class IntakeSubsystem extends SubsystemBase {
     // This method will be called once per scheduler run
     SmartDashboard.putNumber("Intake note detector", IntakeNoteDetector.getValue());
     SmartDashboard.putNumber("Intake Position Motor", PositionIntakeMotor.getPosition().getValueAsDouble());
+    //SmartDashboard.putNumber("Position Intake Error", );
     
   }
 }

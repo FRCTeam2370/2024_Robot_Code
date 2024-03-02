@@ -20,6 +20,7 @@ public class ClimberSubsystem extends SubsystemBase {
   public static CANcoder ClimberCANcoder = new CANcoder(10);
   private static TalonFXConfiguration ClimberConfig = new TalonFXConfiguration();
   private static PositionDutyCycle climberDutyCycle = new PositionDutyCycle(0);
+  
 
   public ClimberSubsystem() {
     resetClimber();
@@ -34,6 +35,10 @@ public class ClimberSubsystem extends SubsystemBase {
     
   }
 
+  public static void ClimbWithAbsolute(double position){
+    ClimberMotor.setControl(climberDutyCycle.withPosition(position));
+  }
+
   public static void ClimbWithSpeed(double speed){
     ClimberMotor.set(speed);
   }
@@ -44,6 +49,8 @@ public class ClimberSubsystem extends SubsystemBase {
     ClimberConfig.Slot0.kP = Constants.ClimberConstants.ClimberkP;
     ClimberConfig.ClosedLoopRamps.DutyCycleClosedLoopRampPeriod = Constants.ClimberConstants.ClimberClosedLoopRamp;
     ClimberMotor.getConfigurator().apply(ClimberConfig);
+    //ClimberConfig.Feedback.FeedbackRemoteSensorID = ClimberCANcoder.getDeviceID();
+    
   }
 
   
@@ -52,5 +59,6 @@ public class ClimberSubsystem extends SubsystemBase {
   public void periodic() {
     // This method will be called once per scheduler run
     SmartDashboard.putNumber("Climber Position", ClimberMotor.getPosition().getValueAsDouble());
+    
   }
 }

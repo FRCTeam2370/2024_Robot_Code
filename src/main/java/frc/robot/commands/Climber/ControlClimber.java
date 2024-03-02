@@ -26,13 +26,11 @@ public class ControlClimber extends Command {
   @Override
   public void execute() {
     if(RobotContainer.operator.getRawButton(1) == true){
-      climberSpeed = 0.2;
+      climberSpeed = 0.1;
     }else if(RobotContainer.operator.getRawButton(2) == true){
-      climberSpeed = 0.4;
+      climberSpeed = 0.2;
     }else if(RobotContainer.operator.getRawButton(3) == true){
-      climberSpeed = 0.6;
-    }else if(RobotContainer.operator.getRawButton(4) == true){
-      climberSpeed = 0.8;
+      climberSpeed = 0.4;
     }
 
     if(RobotContainer.trigger(RobotContainer.operator, 3).getAsBoolean() == true){

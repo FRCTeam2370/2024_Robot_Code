@@ -33,6 +33,8 @@ import frc.robot.commands.Intake.ReverseIntake;
 import frc.robot.commands.Intake.StopIntake;
 import frc.robot.commands.Intake.StoreIntake;
 import frc.robot.commands.Intake.intakeToggle;
+import frc.robot.commands.LED.Amped;
+import frc.robot.commands.LED.IRLEDs;
 import frc.robot.commands.LED.LimelightLEDs;
 import frc.robot.commands.LED.setColors;
 import frc.robot.commands.Shooter.AimShooter;
@@ -90,6 +92,7 @@ public class RobotContainer {
   public static POVButton operatorDown = new POVButton(operator, 180);
   public static POVButton operatorLeft = new POVButton(operator, 270);
   public static JoystickButton operatorStart = new JoystickButton(operator, 7);
+  public static JoystickButton operatorRightButton = new JoystickButton(operator, 6);
   
   public static final SwerveRequest.FieldCentric drive = new SwerveRequest.FieldCentric()
       .withDeadband(MaxSpeed * 0.1).withRotationalDeadband(MaxAngularRate * 0.1) // Add a 10% deadband
@@ -137,6 +140,7 @@ public class RobotContainer {
     }
     drivetrain.registerTelemetry(logger::telemeterize);
 
+   // mLEDSubsystem.setDefaultCommand(new IRLEDs(mLEDSubsystem, mIntakeSubsystem));
 
     //moves shooter to predetermined positions
     //mShooterSubsystem.setDefaultCommand(new AimShooter(mShooterSubsystem));
@@ -169,15 +173,16 @@ public class RobotContainer {
     downDpad.toggleOnTrue(new ShooterToggle());
 
     //Sets the intake in the store position
-    Menu.onTrue(new StoreIntake());
+    Y.onTrue(new StoreIntake());
 
-    Start.toggleOnTrue(drivetrain.applyRequest(()-> drive.withVelocityX(-joystick.getLeftY() * MaxSpeed).withVelocityY(-joystick.getLeftX() * MaxSpeed).withRotationalRate(-Limelight.txSlowly())).alongWith(new LimelightLEDs()));
+    A.toggleOnTrue(drivetrain.applyRequest(()-> drive.withVelocityX(-joystick.getLeftY() * MaxSpeed).withVelocityY(-joystick.getLeftX() * MaxSpeed).withRotationalRate(-Limelight.txSlowly())).alongWith(new LimelightLEDs()));
     
     //This Command acts a bit wierd don't use it quite yet
     //rightDpad.toggleOnTrue(drivetrain.applyRequest(()-> drive.withVelocityX(-joystick.getLeftY() * MaxSpeed).withVelocityY(-Limelight.txSlowly()).withRotationalRate(-Limelight.txSlowly())));
 
     operatorStart.toggleOnTrue(new setColors());
 
+    operatorRightButton.whileTrue(new Amped(mLEDSubsystem));
 
   }
 

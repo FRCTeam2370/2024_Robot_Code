@@ -23,8 +23,8 @@ public class ShootFar extends Command {
   @Override
   public void initialize() {
     ElevatorSubsystem.setElevator(0.1);
-    IntakeSubsystem.setIntakePostition(0.95);
-    ShooterSubsystem.aimShooter(5.93);
+    IntakeSubsystem.setIntakePostition(0.985);
+    ShooterSubsystem.aimShooter(6.58);
   }
 
   // Called every time the scheduler runs while the command is scheduled.
@@ -38,7 +38,6 @@ public class ShootFar extends Command {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return true;
-    
+      return true;    
   }
 }

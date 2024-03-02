@@ -13,6 +13,7 @@ import com.ctre.phoenix6.configs.Slot0Configs;
 import com.ctre.phoenix6.configs.TalonFXConfiguration;
 import com.ctre.phoenix6.configs.TalonFXConfigurator;
 import com.ctre.phoenix6.controls.PositionDutyCycle;
+import com.ctre.phoenix6.controls.VelocityDutyCycle;
 import com.ctre.phoenix6.hardware.CANcoder;
 import com.ctre.phoenix6.hardware.TalonFX;
 import com.ctre.phoenix6.signals.ControlModeValue;
@@ -40,12 +41,15 @@ public class ShooterSubsystem extends SubsystemBase {
   private static PositionDutyCycle mPositionDutyCycle = new PositionDutyCycle(0);
   public static AnalogInput shooterNoteDetector = new AnalogInput(Constants.ShooterConstants.ShooterNoteDetectorChannel);
   private static SparkPIDController aimMotorPID = shooterAimMotor.getPIDController();
+  private static VelocityDutyCycle shooterVelocityDC = new VelocityDutyCycle(0);
   public ShooterSubsystem() {
     resetAimShooterMotor();
     resetShooter();
   }
 
   public static void resetShooter(){
+    shooterMotor1config.Slot0.kP = 0.03;
+    shooterMotor2config.Slot0.kP = 0.03;
     shooterMotor1config.ClosedLoopRamps.DutyCycleClosedLoopRampPeriod = Constants.ShooterConstants.ShooterClosedLoopRamp;
     shooterMotor2config.ClosedLoopRamps.DutyCycleClosedLoopRampPeriod = Constants.ShooterConstants.ShooterClosedLoopRamp;
     shooterMotor1.getConfigurator().apply(shooterMotor1config);
@@ -55,8 +59,10 @@ public class ShooterSubsystem extends SubsystemBase {
   }
 
   public static void runShooter(double shooterSpeed){
-      shooterMotor1.set(shooterSpeed);
-      shooterMotor2.set(shooterSpeed);//* 1.05    
+      /*shooterMotor1.set(shooterSpeed*0.95);
+      shooterMotor2.set(shooterSpeed);//* 1.05*/
+      shooterMotor1.setControl(shooterVelocityDC.withVelocity(shooterSpeed*0.95));
+      shooterMotor2.setControl(shooterVelocityDC.withVelocity(shooterSpeed)); 
   }
 
   public static void aimShooter(double position){
@@ -75,7 +81,7 @@ public class ShooterSubsystem extends SubsystemBase {
     shooterAimMotor.setNeutralMode(NeutralModeValue.Coast);
     shooterAimMotor.getConfigurator().apply(AimMotorConfig);
     shooterAimMotor.setPosition(0);*/
-    aimMotorPID.setP(0.04);
+    aimMotorPID.setP(0.05);
     shooterAimMotor.setClosedLoopRampRate(0.5);
     shooterAimMotor.getEncoder().setPosition(0);
   }
