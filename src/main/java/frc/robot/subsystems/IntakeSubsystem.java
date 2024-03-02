@@ -83,5 +83,6 @@ public class IntakeSubsystem extends SubsystemBase {
     // This method will be called once per scheduler run
     SmartDashboard.putNumber("Intake note detector", IntakeNoteDetector.getValue());
     SmartDashboard.putNumber("Intake Position Motor", PositionIntakeMotor.getPosition().getValueAsDouble());
+    
   }
 }

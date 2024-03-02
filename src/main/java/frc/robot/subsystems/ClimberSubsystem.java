@@ -34,6 +34,10 @@ public class ClimberSubsystem extends SubsystemBase {
     
   }
 
+  public static void ClimbWithSpeed(double speed){
+    ClimberMotor.set(speed);
+  }
+
   public static void resetClimber(){
     ClimberMotor.setPosition(0);
     ClimberMotor.setNeutralMode(NeutralModeValue.Brake);

@@ -25,6 +25,7 @@ import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import edu.wpi.first.wpilibj2.command.button.POVButton;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
+import frc.robot.commands.Climber.ControlClimber;
 import frc.robot.commands.Elevator.MoveElevator;
 import frc.robot.commands.Intake.FeedIntake;
 import frc.robot.commands.Intake.MoveIntake;
@@ -32,6 +33,8 @@ import frc.robot.commands.Intake.ReverseIntake;
 import frc.robot.commands.Intake.StopIntake;
 import frc.robot.commands.Intake.StoreIntake;
 import frc.robot.commands.Intake.intakeToggle;
+import frc.robot.commands.LED.LimelightLEDs;
+import frc.robot.commands.LED.setColors;
 import frc.robot.commands.Shooter.AimShooter;
 import frc.robot.commands.Shooter.RunShooter;
 import frc.robot.commands.Shooter.ScoreAmp;
@@ -47,6 +50,7 @@ import frc.robot.generated.TunerConstants;
 import frc.robot.subsystems.ClimberSubsystem;
 import frc.robot.subsystems.ElevatorSubsystem;
 import frc.robot.subsystems.IntakeSubsystem;
+import frc.robot.subsystems.LEDSubsystem;
 import frc.robot.subsystems.Limelight;
 import frc.robot.subsystems.ShooterSubsystem;
 
@@ -78,6 +82,14 @@ public class RobotContainer {
   public static POVButton rightDpad = new POVButton(driver, 90);
 
   public static JoystickButton operatorA = new JoystickButton(operator, 1);
+  public static JoystickButton operatorB = new JoystickButton(operator, 2);
+  public static JoystickButton operatorX = new JoystickButton(operator, 3);
+  public static JoystickButton operatorY = new JoystickButton(operator, 4);
+  public static POVButton operatorUp = new POVButton(operator, 0);
+  public static POVButton operatorRight = new POVButton(operator, 90);
+  public static POVButton operatorDown = new POVButton(operator, 180);
+  public static POVButton operatorLeft = new POVButton(operator, 270);
+  public static JoystickButton operatorStart = new JoystickButton(operator, 7);
   
   public static final SwerveRequest.FieldCentric drive = new SwerveRequest.FieldCentric()
       .withDeadband(MaxSpeed * 0.1).withRotationalDeadband(MaxAngularRate * 0.1) // Add a 10% deadband
@@ -96,7 +108,7 @@ public class RobotContainer {
   public static final ClimberSubsystem mClimberSubsystem = new ClimberSubsystem();
   private static SendableChooser<Command> AutoChooser; 
   private static final Limelight mLimelight = new Limelight();
- 
+  private static final LEDSubsystem mLEDSubsystem = new LEDSubsystem();
 
   public static Trigger trigger(GenericHID controller, int axis){
     return new Trigger(()-> controller.getRawAxis(axis) >= 0.9);
@@ -128,6 +140,7 @@ public class RobotContainer {
 
     //moves shooter to predetermined positions
     //mShooterSubsystem.setDefaultCommand(new AimShooter(mShooterSubsystem));
+    mClimberSubsystem.setDefaultCommand(new ControlClimber(mClimberSubsystem));
     
    // A.toggleOnTrue(new ShooterJoystick(mShooterSubsystem));
     //runs shooter at predetermined speeds after enabling with the button press
@@ -158,10 +171,13 @@ public class RobotContainer {
     //Sets the intake in the store position
     Menu.onTrue(new StoreIntake());
 
-    Start.toggleOnTrue(drivetrain.applyRequest(()-> drive.withVelocityX(-joystick.getLeftY() * MaxSpeed).withVelocityY(-joystick.getLeftX() * MaxSpeed).withRotationalRate(-Limelight.txSlowly())));
+    Start.toggleOnTrue(drivetrain.applyRequest(()-> drive.withVelocityX(-joystick.getLeftY() * MaxSpeed).withVelocityY(-joystick.getLeftX() * MaxSpeed).withRotationalRate(-Limelight.txSlowly())).alongWith(new LimelightLEDs()));
     
     //This Command acts a bit wierd don't use it quite yet
     //rightDpad.toggleOnTrue(drivetrain.applyRequest(()-> drive.withVelocityX(-joystick.getLeftY() * MaxSpeed).withVelocityY(-Limelight.txSlowly()).withRotationalRate(-Limelight.txSlowly())));
+
+    operatorStart.toggleOnTrue(new setColors());
+
 
   }
 
