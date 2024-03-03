@@ -42,7 +42,7 @@ public class ShooterSubsystem extends SubsystemBase {
   public static AnalogInput shooterNoteDetector = new AnalogInput(Constants.ShooterConstants.ShooterNoteDetectorChannel);
   private static SparkPIDController aimMotorPID = shooterAimMotor.getPIDController();
   private static VelocityDutyCycle shooterVelocityDC = new VelocityDutyCycle(0);
-  public ShooterSubsystem() {
+  public ShooterSubsystem(){
     resetAimShooterMotor();
     resetShooter();
   }
@@ -74,6 +74,8 @@ public class ShooterSubsystem extends SubsystemBase {
     position += addToPosition / 10;
     aimMotorPID.setReference(position, CANSparkMax.ControlType.kPosition);
   }
+
+  
   public static void resetAimShooterMotor(){
     /*AimMotorConfig.Slot0.kP = Constants.ShooterConstants.ShooterAimMotorkP;
     AimMotorConfig.MotorOutput.PeakForwardDutyCycle = 0.5;
@@ -82,7 +84,8 @@ public class ShooterSubsystem extends SubsystemBase {
     shooterAimMotor.getConfigurator().apply(AimMotorConfig);
     shooterAimMotor.setPosition(0);*/
     aimMotorPID.setP(0.05);
-    shooterAimMotor.setClosedLoopRampRate(0.5);
+    aimMotorPID.setFF(0.007);
+    shooterAimMotor.setClosedLoopRampRate(0);
     shooterAimMotor.getEncoder().setPosition(0);
   }
 
@@ -104,5 +107,6 @@ public class ShooterSubsystem extends SubsystemBase {
     SmartDashboard.putNumber("Aim Shooter CANcoder Value", shooterAimCANCoder.getAbsolutePosition().getValueAsDouble()*360);
     SmartDashboard.putNumber("Aim Shooter motor value", shooterAimMotor.getEncoder().getPosition());
     SmartDashboard.putNumber("Shooter Note Detector", shooterNoteDetector.getValue());
+    SmartDashboard.putNumber("something", shooterAimMotor.getEncoder().getPosition());
   }
 }

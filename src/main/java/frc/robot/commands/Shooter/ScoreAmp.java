@@ -24,7 +24,7 @@ public class ScoreAmp extends Command {
   public void initialize() {
     IntakeSubsystem.storeIntake();
     ElevatorSubsystem.setElevator(19.3);
-    ShooterSubsystem.aimShooter(22);
+    ShooterSubsystem.aimShooter(17);
   }
 
   // Called every time the scheduler runs while the command is scheduled.

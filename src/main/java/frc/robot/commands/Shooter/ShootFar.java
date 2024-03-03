@@ -23,8 +23,8 @@ public class ShootFar extends Command {
   @Override
   public void initialize() {
     ElevatorSubsystem.setElevator(0.1);
-    IntakeSubsystem.setIntakePostition(0.985);
-    ShooterSubsystem.aimShooter(6.58);
+    IntakeSubsystem.setIntakePostition(1.11);
+    ShooterSubsystem.aimShooter(5.6);
   }
 
   // Called every time the scheduler runs while the command is scheduled.

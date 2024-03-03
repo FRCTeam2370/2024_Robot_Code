@@ -18,16 +18,22 @@
               {
                 "type": "named",
                 "data": {
-                  "name": "ShootClose"
+                  "name": "Shoot"
                 }
               },
               {
                 "type": "named",
                 "data": {
-                  "name": "RunShooter"
+                  "name": "ShootClose"
                 }
               }
             ]
+          }
+        },
+        {
+          "type": "wait",
+          "data": {
+            "waitTime": 0.4
           }
         },
         {

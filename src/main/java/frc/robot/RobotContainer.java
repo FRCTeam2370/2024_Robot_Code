@@ -175,7 +175,7 @@ public class RobotContainer {
     //Sets the intake in the store position
     Y.onTrue(new StoreIntake());
 
-    A.toggleOnTrue(drivetrain.applyRequest(()-> drive.withVelocityX(-joystick.getLeftY() * MaxSpeed).withVelocityY(-joystick.getLeftX() * MaxSpeed).withRotationalRate(-Limelight.txSlowly())).alongWith(new LimelightLEDs()));
+    A.toggleOnTrue(drivetrain.applyRequest(()-> drive.withVelocityX(-joystick.getLeftY() * MaxSpeed).withVelocityY(-joystick.getLeftX() * MaxSpeed).withRotationalRate(-Limelight.txSlowlyShoot())).alongWith(new LimelightLEDs()));
     
     //This Command acts a bit wierd don't use it quite yet
     //rightDpad.toggleOnTrue(drivetrain.applyRequest(()-> drive.withVelocityX(-joystick.getLeftY() * MaxSpeed).withVelocityY(-Limelight.txSlowly()).withRotationalRate(-Limelight.txSlowly())));

@@ -42,7 +42,7 @@ public class intakeToggle extends Command {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-   if(IntakeSubsystem.IntakeNoteDetector.getValue() < 1000){//1350 for if the bar on the intake is third from the back
+   if(IntakeSubsystem.IntakeNoteDetector.getValue() < 975){//1350 for if the bar on the intake is third from the back
     return true;
    }else{
     return false;

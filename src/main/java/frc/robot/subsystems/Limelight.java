@@ -48,7 +48,15 @@ public class Limelight extends SubsystemBase {
   }
 
   public static boolean InLongRange(){
-    if(DistanceFromTarget > 80 && DistanceFromTarget < 105){
+    if(DistanceFromTarget > 115 && DistanceFromTarget < 185){
+      return true;
+    }else{
+      return false;
+    }
+  }
+
+  public static boolean InCloseRange(){
+    if(DistanceFromTarget > 20 && DistanceFromTarget < 70){
       return true;
     }else{
       return false;
@@ -57,6 +65,11 @@ public class Limelight extends SubsystemBase {
 
   public static double txSlowly(){
     double TX = tx * 0.1;
+    return TX;
+  }
+
+  public static double txSlowlyShoot(){
+    double TX = (tx+5) * 0.1;
     return TX;
   }
 
@@ -69,5 +82,6 @@ SmartDashboard.putBoolean("Apriltag Visible?", tv);
 SmartDashboard.putNumber("X Offset", tx);
    FindDistance();
    SmartDashboard.putBoolean("In Long Range", InLongRange());
+   SmartDashboard.putBoolean("In Close Range", InCloseRange());
   }
 }

@@ -48,14 +48,14 @@ public class IntakeSubsystem extends SubsystemBase {
     IntakePositionconfig.Slot0.kI = 0; 
     IntakePositionconfig.ClosedLoopRamps.DutyCycleClosedLoopRampPeriod = Constants.IntakeConstants.PositionIntakeMotorClosedLoopRamp;
     PositionIntakeMotor.getConfigurator().apply(IntakePositionconfig);
-    PositionIntakeMotor.setControl(IntakeUpDown.withPosition(1.4));//Change this value as well
+    PositionIntakeMotor.setControl(IntakeUpDown.withPosition(1.12));//Change this value as well
   }
   
   public static void setIntakePostition(double position){
     double kI = position < PositionIntakeMotor.getPosition().getValueAsDouble() ? 0 : 0.18;
     IntakePositionconfig.Slot0.kP = Constants.IntakeConstants.PositionIntakeMotorUpkP;
     IntakePositionconfig.Slot0.kI = kI;
-    IntakePositionconfig.Slot0.kV = 0.03;
+    IntakePositionconfig.Slot0.kV = 0.08;
     IntakePositionconfig.ClosedLoopRamps.DutyCycleClosedLoopRampPeriod = 0.01;
     PositionIntakeMotor.getConfigurator().apply(IntakePositionconfig);
     PositionIntakeMotor.setControl(IntakeUpDown.withPosition(position));
