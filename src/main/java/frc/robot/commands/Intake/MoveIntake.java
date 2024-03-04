@@ -25,10 +25,10 @@ public class MoveIntake extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    if(RobotContainer.leftButton.getAsBoolean() == true){
-      IntakeSubsystem.ForwardIntake();
-    } else if (RobotContainer.driver.getRawButton(8) == true){
-      IntakeSubsystem.BackwardIntake();
+    if(RobotContainer.operator.getRawButton(10) == true){
+      IntakeSubsystem.IntakeMotor.set(0.1);
+    } else if (RobotContainer.operator.getRawButton(9) == true){
+      IntakeSubsystem.IntakeMotor.set(-0.1);
     }else{
       IntakeSubsystem.IntakeMotor.set(0);
     }

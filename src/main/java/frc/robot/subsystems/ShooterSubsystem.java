@@ -104,9 +104,9 @@ public class ShooterSubsystem extends SubsystemBase {
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
-    SmartDashboard.putNumber("Aim Shooter CANcoder Value", shooterAimCANCoder.getAbsolutePosition().getValueAsDouble()*360);
+    //SmartDashboard.putNumber("Aim Shooter CANcoder Value", shooterAimCANCoder.getAbsolutePosition().getValueAsDouble()*360);
     SmartDashboard.putNumber("Aim Shooter motor value", shooterAimMotor.getEncoder().getPosition());
     SmartDashboard.putNumber("Shooter Note Detector", shooterNoteDetector.getValue());
-    SmartDashboard.putNumber("something", shooterAimMotor.getEncoder().getPosition());
+    //SmartDashboard.putNumber("something", shooterAimMotor.getEncoder().getPosition());
   }
 }

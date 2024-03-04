@@ -65,6 +65,7 @@ public class IntakeSubsystem extends SubsystemBase {
   public static void resetIntake(){
     PositionIntakeMotor.setNeutralMode(NeutralModeValue.Brake);
     PositionIntakeMotor.setPosition(0);
+    IntakeMotor.getPosition().setUpdateFrequency(0);
   }
 
   public static void ForwardIntake(){
