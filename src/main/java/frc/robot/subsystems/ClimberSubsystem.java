@@ -10,16 +10,19 @@ import com.ctre.phoenix6.hardware.CANcoder;
 import com.ctre.phoenix6.hardware.TalonFX;
 import com.ctre.phoenix6.signals.NeutralModeValue;
 
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
 public class ClimberSubsystem extends SubsystemBase {
   /** Creates a new ClimberSubsystem. */
-  public static TalonFX ClimberMotor = new TalonFX(8);
+  public static TalonFX ClimberMotor = new TalonFX(Constants.ClimberConstants.ClimberMotorID);
   public static CANcoder ClimberCANcoder = new CANcoder(10);
   private static TalonFXConfiguration ClimberConfig = new TalonFXConfiguration();
   private static PositionDutyCycle climberDutyCycle = new PositionDutyCycle(0);
+  public static DigitalInput UpperLimitSwitch = new DigitalInput(Constants.ClimberConstants.UpperLimitSwitchID);
+  public static DigitalInput LowerLimitSwitch = new DigitalInput(Constants.ClimberConstants.LowerLimitSwitchID);
   
 
   public ClimberSubsystem() {
@@ -44,21 +47,29 @@ public class ClimberSubsystem extends SubsystemBase {
   }
 
   public static void resetClimber(){
-    ClimberMotor.setPosition(0);
     ClimberMotor.setNeutralMode(NeutralModeValue.Brake);
     ClimberConfig.Slot0.kP = Constants.ClimberConstants.ClimberkP;
     ClimberConfig.ClosedLoopRamps.DutyCycleClosedLoopRampPeriod = Constants.ClimberConstants.ClimberClosedLoopRamp;
     ClimberMotor.getConfigurator().apply(ClimberConfig);
+    ClimberMotor.setPosition(0);
     //ClimberConfig.Feedback.FeedbackRemoteSensorID = ClimberCANcoder.getDeviceID();
-    
   }
 
+  public static boolean getUpperLimit(){
+    return UpperLimitSwitch.get();
+  }
+
+  public static boolean getLowerLimit(){
+    return LowerLimitSwitch.get();
+  }
   
 
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
     SmartDashboard.putNumber("Climber Position", ClimberMotor.getPosition().getValueAsDouble());
+    SmartDashboard.putBoolean("UpperLimit value", UpperLimitSwitch.get());
+    SmartDashboard.putBoolean("LowerLimit value", LowerLimitSwitch.get());
     
   }
 }

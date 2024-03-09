@@ -30,12 +30,12 @@ public class ControlClimber extends Command {
     }else if(RobotContainer.operator.getRawButton(2) == true){
       climberSpeed = 0.2;
     }else if(RobotContainer.operator.getRawButton(3) == true){
-      climberSpeed = 0.4;
+      climberSpeed = 1;
     }
 
-    if(RobotContainer.trigger(RobotContainer.operator, 3).getAsBoolean() == true){
+    if(RobotContainer.trigger(RobotContainer.operator, 3).getAsBoolean() == true && ClimberSubsystem.LowerLimitSwitch.get() == true){
       ClimberSubsystem.ClimbWithSpeed(climberSpeed);
-    } else if(RobotContainer.trigger(RobotContainer.operator, 2).getAsBoolean() == true){
+    } else if(RobotContainer.trigger(RobotContainer.operator, 2).getAsBoolean() == true && ClimberSubsystem.UpperLimitSwitch.get() == true){
       ClimberSubsystem.ClimbWithSpeed(-climberSpeed);
     }else{
       ClimberSubsystem.ClimbWithSpeed(0);

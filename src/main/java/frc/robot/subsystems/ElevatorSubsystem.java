@@ -28,6 +28,7 @@ public class ElevatorSubsystem extends SubsystemBase {
     elevatorConfig.Slot0.kP = Constants.ElevatorConstants.ElevatorkP;
     elevatorConfig.ClosedLoopRamps.DutyCycleClosedLoopRampPeriod = Constants.ElevatorConstants.ElevatorClosedLoopRamp;
     elevatorMotor.getConfigurator().apply(elevatorConfig);
+    elevatorMotor.getVelocity().setUpdateFrequency(0);
   }
 
   public static void setElevator(double position){

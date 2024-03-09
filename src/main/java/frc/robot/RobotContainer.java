@@ -25,9 +25,12 @@ import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import edu.wpi.first.wpilibj2.command.button.POVButton;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
+import frc.robot.commands.Climber.Climb;
 import frc.robot.commands.Climber.ControlClimber;
+import frc.robot.commands.Climber.ReadyClimber;
 import frc.robot.commands.Elevator.MoveElevator;
 import frc.robot.commands.Intake.FeedIntake;
+import frc.robot.commands.Intake.IntakeAbsoluteTest;
 import frc.robot.commands.Intake.MoveIntake;
 import frc.robot.commands.Intake.ReverseIntake;
 import frc.robot.commands.Intake.StopIntake;
@@ -38,6 +41,7 @@ import frc.robot.commands.LED.IRLEDs;
 import frc.robot.commands.LED.LimelightLEDs;
 import frc.robot.commands.LED.setColors;
 import frc.robot.commands.Shooter.AimShooter;
+import frc.robot.commands.Shooter.PieceAmp;
 import frc.robot.commands.Shooter.RunShooter;
 import frc.robot.commands.Shooter.ScoreAmp;
 import frc.robot.commands.Shooter.Shoot;
@@ -92,6 +96,7 @@ public class RobotContainer {
   public static POVButton operatorDown = new POVButton(operator, 180);
   public static POVButton operatorLeft = new POVButton(operator, 270);
   public static JoystickButton operatorStart = new JoystickButton(operator, 7);
+  public static JoystickButton operatorMenu = new JoystickButton(operator, 8);
   public static JoystickButton operatorRightButton = new JoystickButton(operator, 6);
   
   public static final SwerveRequest.FieldCentric drive = new SwerveRequest.FieldCentric()
@@ -144,8 +149,13 @@ public class RobotContainer {
 
     //moves shooter to predetermined positions
     //mShooterSubsystem.setDefaultCommand(new AimShooter(mShooterSubsystem));
-    mClimberSubsystem.setDefaultCommand(new ControlClimber(mClimberSubsystem));
+
+
+
+    //mClimberSubsystem.setDefaultCommand(new ControlClimber(mClimberSubsystem));
     
+
+
    // A.toggleOnTrue(new ShooterJoystick(mShooterSubsystem));
     //runs shooter at predetermined speeds after enabling with the button press
     //Start.toggleOnTrue(new ShooterToggle());
@@ -158,7 +168,7 @@ public class RobotContainer {
     righButton.onTrue(new ReverseIntake());
     
     //moves the elevator up and positions the shooter to score in the amp
-    X.onTrue(new ScoreAmp());
+    X.onTrue(new PieceAmp());
 
     //moves the elevator down and positions the shooter to grab a piece
     M2.onTrue(new ShootFar());//This value is a nice shooting value: 5 - 6
@@ -184,7 +194,13 @@ public class RobotContainer {
 
     operatorRightButton.whileTrue(new Amped(mLEDSubsystem));
 
-    
+    operatorDown.toggleOnTrue(new IntakeAbsoluteTest());
+
+    operatorMenu.onTrue(new PieceAmp());
+
+    operatorA.onTrue(new Climb());
+
+    operatorB.onTrue(new ReadyClimber());
 
   }
 

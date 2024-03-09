@@ -11,8 +11,9 @@ public class Constants {
         public static final int IntakeMotorID = 6;
         public static final int IntakeNoteDetectorChannel = 1;
         public static final int PositionIntakeMotorID = 13;
-        public static final double PositionIntakeMotorUpkP = 0.06;
-        public static final double PositionIntakeMotorDownkP = 0.052;
+        public static final int IntakeAbsolutePoseID = 17;
+        public static final double PositionIntakeMotorUpkP = 1.2;
+        public static final double PositionIntakeMotorDownkP = 1;
         public static final double PositionIntakeMotorClosedLoopRamp = 0.5;
     }
 
@@ -34,7 +35,9 @@ public class Constants {
 
     public class ClimberConstants{
         public static final int ClimberMotorID = 8;
-        public static final double ClimberkP = 0.1;
+        public static final int UpperLimitSwitchID = 1;
+        public static final int LowerLimitSwitchID = 0;
+        public static final double ClimberkP = 0.05;
         public static final double ClimberClosedLoopRamp = 0.5;
     }
     public class LimelightConstants{
