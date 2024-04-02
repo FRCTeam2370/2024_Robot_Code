@@ -1,0 +1,133 @@
+{
+  "version": 1.0,
+  "waypoints": [
+    {
+      "anchor": {
+        "x": 0.77430354290908,
+        "y": 4.560720232551577
+      },
+      "prevControl": null,
+      "nextControl": {
+        "x": 1.8852482149408742,
+        "y": 3.730435267138341
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 2.5518150181599504,
+        "y": 3.519940487174422
+      },
+      "prevControl": {
+        "x": 2.144858538037094,
+        "y": 3.7511657599715
+      },
+      "nextControl": {
+        "x": 3.066357813627308,
+        "y": 3.2275866261134234
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 8.1299266872038,
+        "y": 0.7835083476434771
+      },
+      "prevControl": {
+        "x": 6.41088598416513,
+        "y": 0.362518787715639
+      },
+      "nextControl": null,
+      "isLocked": false,
+      "linkedName": null
+    }
+  ],
+  "rotationTargets": [
+    {
+      "waypointRelativePos": 0.25,
+      "rotationDegrees": 132.0003446935042,
+      "rotateFast": false
+    }
+  ],
+  "constraintZones": [
+    {
+      "name": "Shoot",
+      "minWaypointRelativePos": 0.1,
+      "maxWaypointRelativePos": 0.35,
+      "constraints": {
+        "maxVelocity": 1.5,
+        "maxAcceleration": 1.5,
+        "maxAngularVelocity": 540.0,
+        "maxAngularAcceleration": 720.0
+      }
+    }
+  ],
+  "eventMarkers": [
+    {
+      "name": "FeedIntake",
+      "waypointRelativePos": 0.15,
+      "command": {
+        "type": "parallel",
+        "data": {
+          "commands": [
+            {
+              "type": "named",
+              "data": {
+                "name": "FeedIntake"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "IntakeToggle",
+      "waypointRelativePos": 1.45,
+      "command": {
+        "type": "parallel",
+        "data": {
+          "commands": [
+            {
+              "type": "named",
+              "data": {
+                "name": "StopIntake"
+              }
+            },
+            {
+              "type": "named",
+              "data": {
+                "name": "StopShooter"
+              }
+            },
+            {
+              "type": "named",
+              "data": {
+                "name": "intakeToggle"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "globalConstraints": {
+    "maxVelocity": 3.0,
+    "maxAcceleration": 3.0,
+    "maxAngularVelocity": 540.0,
+    "maxAngularAcceleration": 720.0
+  },
+  "goalEndState": {
+    "velocity": 0,
+    "rotation": -176.53177074108297,
+    "rotateFast": false
+  },
+  "reversed": false,
+  "folder": "AmpSideAutos",
+  "previewStartingState": {
+    "rotation": 119.93151184050778,
+    "velocity": 0
+  },
+  "useDefaultConstraints": true
+}

@@ -1,0 +1,70 @@
+{
+  "version": 1.0,
+  "waypoints": [
+    {
+      "anchor": {
+        "x": 0.77430354290908,
+        "y": 4.549026078109137
+      },
+      "prevControl": null,
+      "nextControl": {
+        "x": 1.148516485067158,
+        "y": 4.0695657459691
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 1.4525645005705963,
+        "y": 4.432084533684738
+      },
+      "prevControl": {
+        "x": 1.242069720606677,
+        "y": 4.05787159152666
+      },
+      "nextControl": null,
+      "isLocked": false,
+      "linkedName": null
+    }
+  ],
+  "rotationTargets": [],
+  "constraintZones": [],
+  "eventMarkers": [
+    {
+      "name": "Feed Intake",
+      "waypointRelativePos": 0.8,
+      "command": {
+        "type": "parallel",
+        "data": {
+          "commands": [
+            {
+              "type": "named",
+              "data": {
+                "name": "FeedIntake"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "globalConstraints": {
+    "maxVelocity": 3.0,
+    "maxAcceleration": 3.0,
+    "maxAngularVelocity": 540.0,
+    "maxAngularAcceleration": 720.0
+  },
+  "goalEndState": {
+    "velocity": 0,
+    "rotation": 135.00000000000006,
+    "rotateFast": false
+  },
+  "reversed": false,
+  "folder": "SorceSideAutos",
+  "previewStartingState": {
+    "rotation": 119.05460409907711,
+    "velocity": 0
+  },
+  "useDefaultConstraints": true
+}

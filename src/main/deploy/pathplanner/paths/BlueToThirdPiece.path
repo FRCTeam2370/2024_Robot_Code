@@ -1,0 +1,98 @@
+{
+  "version": 1.0,
+  "waypoints": [
+    {
+      "anchor": {
+        "x": 1.9203306782681937,
+        "y": 5.6482765956984915
+      },
+      "prevControl": null,
+      "nextControl": {
+        "x": 1.2601803825935456,
+        "y": 5.5768617000416905
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 2.7323938733388164,
+        "y": 5.6482765956984915
+      },
+      "prevControl": {
+        "x": 2.7549364388584032,
+        "y": 5.683908392810096
+      },
+      "nextControl": {
+        "x": 2.369875085623178,
+        "y": 5.075263028018934
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 1.9203306782681937,
+        "y": 5.168816263558454
+      },
+      "prevControl": {
+        "x": 2.376402701523351,
+        "y": 5.414393506849693
+      },
+      "nextControl": null,
+      "isLocked": false,
+      "linkedName": null
+    }
+  ],
+  "rotationTargets": [
+    {
+      "waypointRelativePos": 0.75,
+      "rotationDegrees": -173.9602051932821,
+      "rotateFast": false
+    }
+  ],
+  "constraintZones": [],
+  "eventMarkers": [
+    {
+      "name": "StopAndDropIntake",
+      "waypointRelativePos": 0,
+      "command": {
+        "type": "parallel",
+        "data": {
+          "commands": [
+            {
+              "type": "named",
+              "data": {
+                "name": "StopShooter"
+              }
+            },
+            {
+              "type": "named",
+              "data": {
+                "name": "intakeToggle"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "globalConstraints": {
+    "maxVelocity": 2.5,
+    "maxAcceleration": 2.5,
+    "maxAngularVelocity": 540.0,
+    "maxAngularAcceleration": 720.0
+  },
+  "goalEndState": {
+    "velocity": 0,
+    "rotation": 158.62937773065687,
+    "rotateFast": false
+  },
+  "reversed": false,
+  "folder": "CloseSideFourPieceAuto",
+  "previewStartingState": {
+    "rotation": -179.2151753970081,
+    "velocity": 0
+  },
+  "useDefaultConstraints": false
+}

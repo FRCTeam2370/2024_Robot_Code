@@ -8,18 +8,18 @@ package frc.robot;
 public class Constants {
     
     public class IntakeConstants{
-        public static final int IntakeMotorID = 6;
+        public static final int IntakeMotorID = 42;
         public static final int IntakeNoteDetectorChannel = 1;
-        public static final int PositionIntakeMotorID = 13;
-        public static final int IntakeAbsolutePoseID = 17;
+        public static final int PositionIntakeMotorID = 41;
+        public static final int IntakeAbsolutePoseID = 43;
         public static final double PositionIntakeMotorUpkP = 1.2;
         public static final double PositionIntakeMotorDownkP = 1;
         public static final double PositionIntakeMotorClosedLoopRamp = 0.5;
     }
 
     public class ShooterConstants{
-        public static final int ShooterMotor1ID = 15;
-        public static final int ShooterMotor2ID = 16;
+        public static final int ShooterMotor1ID = 53;
+        public static final int ShooterMotor2ID = 54;
         public static final int ShooterAimCANcoderID = 12;
         public static final int ShooterAimMotorID = 1;
         public static final int ShooterNoteDetectorChannel = 0;
@@ -28,7 +28,7 @@ public class Constants {
     }
 
     public class ElevatorConstants{
-        public static final int ElevatorMotorID = 14;
+        public static final int ElevatorMotorID = 51;
         public static final double ElevatorkP = 0.06;
         public static final double ElevatorClosedLoopRamp = 0.1;
     }

@@ -1,0 +1,70 @@
+{
+  "version": 1.0,
+  "waypoints": [
+    {
+      "anchor": {
+        "x": 0.79769185179396,
+        "y": 6.537032333323926
+      },
+      "prevControl": null,
+      "nextControl": {
+        "x": 1.160210639509598,
+        "y": 6.420090788899527
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 1.733224207189155,
+        "y": 6.665668032190766
+      },
+      "prevControl": {
+        "x": 1.6864475894193949,
+        "y": 6.653973877748326
+      },
+      "nextControl": null,
+      "isLocked": false,
+      "linkedName": null
+    }
+  ],
+  "rotationTargets": [],
+  "constraintZones": [],
+  "eventMarkers": [
+    {
+      "name": "FeedIntake",
+      "waypointRelativePos": 0.6,
+      "command": {
+        "type": "parallel",
+        "data": {
+          "commands": [
+            {
+              "type": "named",
+              "data": {
+                "name": "FeedIntake"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "globalConstraints": {
+    "maxVelocity": 1.5,
+    "maxAcceleration": 1.5,
+    "maxAngularVelocity": 540.0,
+    "maxAngularAcceleration": 720.0
+  },
+  "goalEndState": {
+    "velocity": 0,
+    "rotation": -138.99091309842976,
+    "rotateFast": false
+  },
+  "reversed": false,
+  "folder": "AmpSideAutos",
+  "previewStartingState": {
+    "rotation": -119.74488129694224,
+    "velocity": 0
+  },
+  "useDefaultConstraints": false
+}

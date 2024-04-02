@@ -1,0 +1,61 @@
+{
+  "version": 1.0,
+  "startingPose": {
+    "position": {
+      "x": 0.77430354290908,
+      "y": 4.560720232551577
+    },
+    "rotation": 119.14807184571306
+  },
+  "command": {
+    "type": "sequential",
+    "data": {
+      "commands": [
+        {
+          "type": "named",
+          "data": {
+            "name": "Shoot"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "ShootFar"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "SourceSideScoreFirstPiece"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "SourceSideGetPieceMid5"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "FeedIntake"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "SourceSideGetPieceMid4"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "FeedIntake"
+          }
+        }
+      ]
+    }
+  },
+  "folder": "NewSourceSideAutos",
+  "choreoAuto": false
+}

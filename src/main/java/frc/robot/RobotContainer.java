@@ -5,22 +5,19 @@
 package frc.robot;
 
 import com.ctre.phoenix6.Utils;
-import com.ctre.phoenix6.mechanisms.swerve.SwerveRequest;
 import com.ctre.phoenix6.mechanisms.swerve.SwerveModule.DriveRequestType;
+import com.ctre.phoenix6.mechanisms.swerve.SwerveRequest;
 import com.pathplanner.lib.auto.AutoBuilder;
 import com.pathplanner.lib.auto.NamedCommands;
-import com.pathplanner.lib.commands.PathPlannerAuto;
-import com.pathplanner.lib.path.PathPlannerPath;
 
+import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.geometry.Translation2d;
 import edu.wpi.first.wpilibj.GenericHID;
-import edu.wpi.first.wpilibj.PS4Controller.Button;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
-import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import edu.wpi.first.wpilibj2.command.button.POVButton;
@@ -28,31 +25,30 @@ import edu.wpi.first.wpilibj2.command.button.Trigger;
 import frc.robot.commands.Climber.Climb;
 import frc.robot.commands.Climber.ControlClimber;
 import frc.robot.commands.Climber.ReadyClimber;
-import frc.robot.commands.Elevator.MoveElevator;
 import frc.robot.commands.Intake.FeedIntake;
 import frc.robot.commands.Intake.IntakeAbsoluteTest;
-import frc.robot.commands.Intake.MoveIntake;
 import frc.robot.commands.Intake.ReverseIntake;
 import frc.robot.commands.Intake.StopIntake;
 import frc.robot.commands.Intake.StoreIntake;
 import frc.robot.commands.Intake.intakeToggle;
 import frc.robot.commands.LED.Amped;
-import frc.robot.commands.LED.IRLEDs;
 import frc.robot.commands.LED.LimelightLEDs;
 import frc.robot.commands.LED.setColors;
-import frc.robot.commands.Shooter.AimShooter;
 import frc.robot.commands.Shooter.PieceAmp;
 import frc.robot.commands.Shooter.RunShooter;
-import frc.robot.commands.Shooter.ScoreAmp;
+import frc.robot.commands.Shooter.RunShooterSlow;
+import frc.robot.commands.Shooter.ScoreTrap;
 import frc.robot.commands.Shooter.Shoot;
 import frc.robot.commands.Shooter.ShootClose;
 import frc.robot.commands.Shooter.ShootFar;
-import frc.robot.commands.Shooter.ShooterIntakeTilSight;
-import frc.robot.commands.Shooter.ShooterJoystick;
+import frc.robot.commands.Shooter.ShootFast;
+import frc.robot.commands.Shooter.ShootMid;
+import frc.robot.commands.Shooter.ShootWayFar;
 import frc.robot.commands.Shooter.ShooterToggle;
 import frc.robot.commands.Shooter.StopShooter;
 import frc.robot.commands.Shooter.StoreShooter;
-import frc.robot.generated.TunerConstants;
+import frc.robot.commands.limelight.AlignToTag;
+import frc.robot.generated.TunerConstants1;
 import frc.robot.subsystems.ClimberSubsystem;
 import frc.robot.subsystems.ElevatorSubsystem;
 import frc.robot.subsystems.IntakeSubsystem;
@@ -61,15 +57,19 @@ import frc.robot.subsystems.Limelight;
 import frc.robot.subsystems.ShooterSubsystem;
 
 public class RobotContainer {
-  private static double MaxSpeed = 6; // 6 meters per second desired top speed
+  public static double MaxSpeed = TunerConstants1.kSpeedAt12VoltsMps; // 6 meters per second desired top speed
   private static double MaxAngularRate = 1.5 * Math.PI; // 3/4 of a rotation per second max angular velocity
 
   //private final SendableChooser<Command> autoChooser;
 
+
+  public static PIDController LimelightTurnPID = new PIDController(1.5,0, 0);
+
+
   
   /* Setting up bindings for necessary control of the swerve drive platform */
-  public static final CommandSwerveDrivetrain drivetrain = TunerConstants.DriveTrain;// My drivetrain
-  private final CommandXboxController joystick = new CommandXboxController(0); // My joystick
+  public static final CommandSwerveDrivetrain drivetrain = TunerConstants1.DriveTrain;// My drivetrain
+  public final static CommandXboxController joystick = new CommandXboxController(0); // My joystick
   public static final GenericHID driver = new GenericHID(0);
   public static final GenericHID operator = new GenericHID(1);
 
@@ -138,7 +138,7 @@ public class RobotContainer {
        // .applyRequest(() -> point.withModuleDirection(new Rotation2d(-joystick.getLeftY(), -joystick.getLeftX()))));
 
     // reset the field-centric heading on left bumper press
-    UpDpad.onTrue(drivetrain.runOnce(() -> drivetrain.seedFieldRelative()));
+    UpDpad.onTrue(drivetrain.runOnce(() -> drivetrain.seedFieldRelative(new Pose2d(new Translation2d(), Rotation2d.fromDegrees(180)))));//
 
     if (Utils.isSimulation()) {
       drivetrain.seedFieldRelative(new Pose2d(new Translation2d(), Rotation2d.fromDegrees(90)));
@@ -152,7 +152,7 @@ public class RobotContainer {
 
 
 
-    //mClimberSubsystem.setDefaultCommand(new ControlClimber(mClimberSubsystem));
+    operatorLeft.toggleOnTrue(new ControlClimber(mClimberSubsystem));
     
 
 
@@ -168,39 +168,47 @@ public class RobotContainer {
     righButton.onTrue(new ReverseIntake());
     
     //moves the elevator up and positions the shooter to score in the amp
-    X.onTrue(new PieceAmp());
+    X.toggleOnTrue(new PieceAmp());
 
     //moves the elevator down and positions the shooter to grab a piece
     M2.onTrue(new ShootFar());//This value is a nice shooting value: 5 - 6
 
     //Stores the shooter to a position where the robot can go under the stage
-    B.onTrue(new StoreShooter());
+    B.toggleOnTrue(new StoreShooter());
 
     //readies the shooter, intake, and elevator for close up shooting
     M1.onTrue(new ShootClose());
 
     //Runs the Shooter
-    downDpad.toggleOnTrue(new ShooterToggle());
+    //downDpad.toggleOnTrue(new ShooterToggle());
 
     //Sets the intake in the store position
     Y.onTrue(new StoreIntake());
 
-    A.toggleOnTrue(drivetrain.applyRequest(()-> drive.withVelocityX(-joystick.getLeftY() * MaxSpeed).withVelocityY(-joystick.getLeftX() * MaxSpeed).withRotationalRate(-Limelight.txSlowlyShoot())).alongWith(new LimelightLEDs()));
+    trigger(driver, 3).whileTrue(new ShootFast());
+    
+    trigger(driver, 2).whileTrue(new RunShooterSlow());
+
+    A.toggleOnTrue(drivetrain.applyRequest(()-> drive.withVelocityX((-joystick.getLeftY() * MaxSpeed)* 0.75).withVelocityY((-joystick.getLeftX() * MaxSpeed)* 0.75).withRotationalRate(LimelightTurnPID.calculate(Limelight.txSlowlyShoot()))).alongWith(new LimelightLEDs()));
+    //A.toggleOnTrue(new AlignToTag(mLimelight));
+
     
     //This Command acts a bit wierd don't use it quite yet
-    //rightDpad.toggleOnTrue(drivetrain.applyRequest(()-> drive.withVelocityX(-joystick.getLeftY() * MaxSpeed).withVelocityY(-Limelight.txSlowly()).withRotationalRate(-Limelight.txSlowly())));
+    //rightDpad.toggleOnTrue(drivetrain.applyRPequest(()-> drive.withVelocityX(-joystick.getLeftY() * MaxSpeed).withVelocityY(-Limelight.txSlowly()).withRotationalRate(-Limelight.txSlowly())));
 
     operatorStart.toggleOnTrue(new setColors());
 
     operatorRightButton.whileTrue(new Amped(mLEDSubsystem));
 
-    operatorDown.toggleOnTrue(new IntakeAbsoluteTest());
+    operatorDown.toggleOnTrue(new ShootMid());
 
-    operatorMenu.onTrue(new PieceAmp());
+    operatorMenu.onTrue(new ScoreTrap());
 
     operatorA.onTrue(new Climb());
 
     operatorB.onTrue(new ReadyClimber());
+
+
 
   }
 
@@ -217,21 +225,24 @@ public class RobotContainer {
     NamedCommands.registerCommand("FeedIntake", new FeedIntake());
     NamedCommands.registerCommand("Shoot", new Shoot());
     NamedCommands.registerCommand("StopIntake", new StopIntake());
+    NamedCommands.registerCommand("ShootMid", new ShootMid());
+    //NamedCommands.registerCommand("AlignToTag", drivetrain.applyRequest(()-> drive.withVelocityX((-joystick.getLeftY() * MaxSpeed)* 0.75).withVelocityY((-joystick.getLeftX() * MaxSpeed)* 0.75).withRotationalRate(LimelightTurnPID.calculate(Limelight.txSlowlyShoot()))));
+
     AutoChooser = AutoBuilder.buildAutoChooser();
-    
+
     configureBindings();
-    
+
     SmartDashboard.putData("Auto Chooser", AutoChooser);
     
    //autoChooser = AutoBuilder.buildAutoChooser();
     //SmartDashboard.putData("Auto mode", autoChooser);
   }
   
-  private Command TwoPieceAmpSide = drivetrain.getAutoPath("TwoPieceAmpSide");
-  private Command ShootAndBackAway = drivetrain.getAutoPath("ShootAndBackAway");
-  private Command CloseSideFourPiece = drivetrain.getAutoPath("CloseSideFourPiece");
-  private Command TheScoot = drivetrain.getAutoPath("TheScoot");
-  private Command CloseSideThreePiece = drivetrain.getAutoPath("CloseSideThreePiece");
+  //private Command TwoPieceAmpSide = drivetrain.getAutoPath("TwoPieceAmpSide");
+  //private Command ShootAndBackAway = drivetrain.getAutoPath("ShootAndBackAway");
+  //private Command CloseSideFourPiece = drivetrain.getAutoPath("CloseSideFourPiece");
+  //private Command TheScoot = drivetrain.getAutoPath("TheScoot");
+  //private Command CloseSideThreePiece = drivetrain.getAutoPath("CloseSideThreePiece");
 
   public Command getAutonomousCommand() {
     

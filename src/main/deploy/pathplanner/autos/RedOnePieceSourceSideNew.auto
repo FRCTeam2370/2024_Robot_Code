@@ -1,0 +1,43 @@
+{
+  "version": 1.0,
+  "startingPose": {
+    "position": {
+      "x": 0.77430354290908,
+      "y": 4.560720232551577
+    },
+    "rotation": 122.00538320808353
+  },
+  "command": {
+    "type": "sequential",
+    "data": {
+      "commands": [
+        {
+          "type": "named",
+          "data": {
+            "name": "ShootFar"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "Shoot"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "RedScore1st"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "BringBackRed1"
+          }
+        }
+      ]
+    }
+  },
+  "folder": "NewSourceSideAutos",
+  "choreoAuto": false
+}

@@ -1,0 +1,150 @@
+{
+  "version": 1.0,
+  "waypoints": [
+    {
+      "anchor": {
+        "x": 1.686447589419395,
+        "y": 4.572414386994017
+      },
+      "prevControl": null,
+      "nextControl": {
+        "x": 1.4876469638979162,
+        "y": 2.3973016607001876
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 8.10653837831892,
+        "y": 0.7367317298737166
+      },
+      "prevControl": {
+        "x": 8.52979469390273,
+        "y": 0.7164559782289831
+      },
+      "nextControl": {
+        "x": 6.153614586431451,
+        "y": 0.8302849654132365
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 1.686447589419395,
+        "y": 4.572414386994017
+      },
+      "prevControl": {
+        "x": 1.8150832882862347,
+        "y": 3.274363243883183
+      },
+      "nextControl": null,
+      "isLocked": false,
+      "linkedName": null
+    }
+  ],
+  "rotationTargets": [
+    {
+      "waypointRelativePos": 0.9,
+      "rotationDegrees": 170.07782224002707,
+      "rotateFast": false
+    }
+  ],
+  "constraintZones": [
+    {
+      "name": "SlowToPiece",
+      "minWaypointRelativePos": 0.75,
+      "maxWaypointRelativePos": 0.9,
+      "constraints": {
+        "maxVelocity": 2.0,
+        "maxAcceleration": 2.0,
+        "maxAngularVelocity": 540.0,
+        "maxAngularAcceleration": 720.0
+      }
+    }
+  ],
+  "eventMarkers": [
+    {
+      "name": "StopShootAndIntake",
+      "waypointRelativePos": 0.15,
+      "command": {
+        "type": "parallel",
+        "data": {
+          "commands": [
+            {
+              "type": "named",
+              "data": {
+                "name": "StopShooter"
+              }
+            },
+            {
+              "type": "named",
+              "data": {
+                "name": "StopIntake"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "DropIntake",
+      "waypointRelativePos": 0.5,
+      "command": {
+        "type": "parallel",
+        "data": {
+          "commands": [
+            {
+              "type": "named",
+              "data": {
+                "name": "intakeToggle"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Aim",
+      "waypointRelativePos": 1.7,
+      "command": {
+        "type": "parallel",
+        "data": {
+          "commands": [
+            {
+              "type": "named",
+              "data": {
+                "name": "ShootMid"
+              }
+            },
+            {
+              "type": "named",
+              "data": {
+                "name": "Shoot"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "globalConstraints": {
+    "maxVelocity": 4.0,
+    "maxAcceleration": 4.0,
+    "maxAngularVelocity": 540.0,
+    "maxAngularAcceleration": 720.0
+  },
+  "goalEndState": {
+    "velocity": 0,
+    "rotation": 149.53445508054008,
+    "rotateFast": false
+  },
+  "reversed": false,
+  "folder": "SorceSideAutosNew",
+  "previewStartingState": {
+    "rotation": 139.18491612511846,
+    "velocity": 0
+  },
+  "useDefaultConstraints": false
+}

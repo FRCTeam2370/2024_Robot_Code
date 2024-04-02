@@ -18,7 +18,8 @@ import edu.wpi.first.wpilibj.Notifier;
 import edu.wpi.first.wpilibj.RobotController;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Subsystem;
-import frc.robot.generated.TunerConstants;
+import frc.robot.generated.TunerConstants1;
+
 
 /**
  * Class that extends the Phoenix SwerveDrivetrain class and implements subsystem
@@ -59,7 +60,7 @@ public class SwerveSubsystem2 extends SwerveDrivetrain implements Subsystem {
             (speeds)->this.setControl(autoRequest.withSpeeds(speeds)), // Consumer of ChassisSpeeds to drive the robot
             new HolonomicPathFollowerConfig(new PIDConstants(10, 0, 0),
                                             new PIDConstants(10, 0, 0),
-                                            TunerConstants.kSpeedAt12VoltsMps,
+                                            TunerConstants1.kSpeedAt12VoltsMps,
                                             driveBaseRadius,
                                             new ReplanningConfig()),
             ()->false, // Change this if the path needs to be flipped on red vs blue

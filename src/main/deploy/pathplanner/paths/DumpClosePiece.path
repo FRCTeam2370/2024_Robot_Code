@@ -16,12 +16,12 @@
     },
     {
       "anchor": {
-        "x": 6.35241521195293,
-        "y": 1.719040703038672
+        "x": 5.852316502732768,
+        "y": 1.823204786552092
       },
       "prevControl": {
-        "x": 6.890346316305168,
-        "y": 1.4968517686323146
+        "x": 6.390247607085007,
+        "y": 1.6010158521457345
       },
       "nextControl": null,
       "isLocked": false,
@@ -32,7 +32,7 @@
   "constraintZones": [],
   "eventMarkers": [
     {
-      "name": "GetShooterReady",
+      "name": "Aim",
       "waypointRelativePos": 0.35,
       "command": {
         "type": "parallel",
@@ -41,7 +41,24 @@
             {
               "type": "named",
               "data": {
-                "name": "ShootFar"
+                "name": "ShootClose"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Shoot",
+      "waypointRelativePos": 0.85,
+      "command": {
+        "type": "parallel",
+        "data": {
+          "commands": [
+            {
+              "type": "named",
+              "data": {
+                "name": "FeedIntake"
               }
             }
           ]
@@ -50,8 +67,8 @@
     }
   ],
   "globalConstraints": {
-    "maxVelocity": 2.0,
-    "maxAcceleration": 2.0,
+    "maxVelocity": 3.0,
+    "maxAcceleration": 3.0,
     "maxAngularVelocity": 540.0,
     "maxAngularAcceleration": 720.0
   },

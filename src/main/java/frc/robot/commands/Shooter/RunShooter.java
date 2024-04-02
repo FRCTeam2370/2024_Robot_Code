@@ -26,7 +26,7 @@ public class RunShooter extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    ShooterSubsystem.runShooter(-80);
+    ShooterSubsystem.runShooter(-95);
     IntakeSubsystem.BackwardIntake();
     
   }

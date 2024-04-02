@@ -30,7 +30,7 @@ public class ReadyClimber extends Command {
     if(ClimberSubsystem.LowerLimitSwitch.get() == false){
       ClimberSubsystem.Climb(ClimberSubsystem.ClimberMotor.getPosition().getValueAsDouble());
     }else{
-      ClimberSubsystem.Climb(30);
+      ClimberSubsystem.Climb(145);
     }
   }
 

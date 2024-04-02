@@ -18,13 +18,13 @@
               {
                 "type": "named",
                 "data": {
-                  "name": "Shoot"
+                  "name": "ShootClose"
                 }
               },
               {
                 "type": "named",
                 "data": {
-                  "name": "ShootClose"
+                  "name": "Shoot"
                 }
               }
             ]
@@ -33,7 +33,7 @@
         {
           "type": "wait",
           "data": {
-            "waitTime": 0.4
+            "waitTime": 0.2
           }
         },
         {
@@ -68,7 +68,7 @@
               {
                 "type": "named",
                 "data": {
-                  "name": "ShootFar"
+                  "name": "ShootMid"
                 }
               },
               {
@@ -99,7 +99,7 @@
               {
                 "type": "named",
                 "data": {
-                  "name": "ShootFar"
+                  "name": "ShootMid"
                 }
               },
               {
@@ -149,7 +149,7 @@
               {
                 "type": "named",
                 "data": {
-                  "name": "ShootFar"
+                  "name": "ShootMid"
                 }
               },
               {

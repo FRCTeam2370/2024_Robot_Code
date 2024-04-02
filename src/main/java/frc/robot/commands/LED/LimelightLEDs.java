@@ -5,6 +5,7 @@
 package frc.robot.commands.LED;
 
 import edu.wpi.first.wpilibj2.command.Command;
+import frc.robot.commands.Shooter.ShootClose;
 import frc.robot.subsystems.ElevatorSubsystem;
 import frc.robot.subsystems.IntakeSubsystem;
 import frc.robot.subsystems.LEDSubsystem;
@@ -15,10 +16,12 @@ public class LimelightLEDs extends Command {
   private static LEDSubsystem mLedSubsystem = new LEDSubsystem();
   private static Limelight mLimelight = new Limelight();
   private static ShooterSubsystem mShooterSubsystem = new ShooterSubsystem();
+  private static IntakeSubsystem mIntakeSubsystem = new IntakeSubsystem();
+  private static ElevatorSubsystem mElevatorSubsystem = new ElevatorSubsystem();
   /** Creates a new LimelightLEDs. */
   public LimelightLEDs() {
     // Use addRequirements() here to declare subsystem dependencies.
-    addRequirements(mLedSubsystem, mLimelight, mShooterSubsystem);
+    addRequirements(mLedSubsystem, mLimelight, mShooterSubsystem, mIntakeSubsystem, mElevatorSubsystem);
   }
 
   // Called when the command is initially scheduled.
@@ -30,11 +33,23 @@ public class LimelightLEDs extends Command {
   public void execute() {
     if(Limelight.InLongRange() == true){
       LEDSubsystem.setGreen();
+      ElevatorSubsystem.setElevator(0.1);
+      IntakeSubsystem.setIntakePostition(0.01);
+      ShooterSubsystem.aimShooter(5.4);
     }else if(Limelight.InCloseRange() == true){
       LEDSubsystem.setGreen();
-    }else{
+      ElevatorSubsystem.setElevator(0.1);
+      IntakeSubsystem.setIntakePostition(0.006);
+      ShooterSubsystem.aimShooter(3.35);
+    }/*else if(Limelight.InMidRange() == true){
+      LEDSubsystem.setGreen();
+      ElevatorSubsystem.setElevator(0.1);
+      IntakeSubsystem.setIntakePostition(0.013);
+      ShooterSubsystem.aimShooter(5.6);
+    }*/else{
       LEDSubsystem.setRed();
     }
+    
 
     ShooterSubsystem.runShooter(-90);
   }

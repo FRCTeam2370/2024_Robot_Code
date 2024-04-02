@@ -24,10 +24,16 @@
               {
                 "type": "named",
                 "data": {
-                  "name": "RunShooter"
+                  "name": "Shoot"
                 }
               }
             ]
+          }
+        },
+        {
+          "type": "wait",
+          "data": {
+            "waitTime": 0.2
           }
         },
         {
@@ -62,13 +68,19 @@
               {
                 "type": "named",
                 "data": {
-                  "name": "ShootFar"
+                  "name": "ShootMid"
                 }
               },
               {
                 "type": "named",
                 "data": {
-                  "name": "RunShooter"
+                  "name": "Shoot"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "FeedIntake"
                 }
               }
             ]
@@ -99,7 +111,7 @@
               {
                 "type": "named",
                 "data": {
-                  "name": "ShootFar"
+                  "name": "ShootMid"
                 }
               },
               {

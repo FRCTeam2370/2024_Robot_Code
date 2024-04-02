@@ -1,0 +1,80 @@
+{
+  "version": 1.0,
+  "startingPose": {
+    "position": {
+      "x": 0.7976918517959699,
+      "y": 4.5724143870011
+    },
+    "rotation": 120.68642914362877
+  },
+  "command": {
+    "type": "sequential",
+    "data": {
+      "commands": [
+        {
+          "type": "named",
+          "data": {
+            "name": "ShootMid"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "Shoot"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "ScoreAndExit"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "DumpClosePiece"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "GetNextPieceAndScore"
+          }
+        },
+        {
+          "type": "parallel",
+          "data": {
+            "commands": [
+              {
+                "type": "named",
+                "data": {
+                  "name": "FeedIntake"
+                }
+              },
+              {
+                "type": "wait",
+                "data": {
+                  "waitTime": 0.1
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "GrabandScore3rdPiece"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "FeedIntake"
+          }
+        }
+      ]
+    }
+  },
+  "folder": "SorceSideAutos",
+  "choreoAuto": false
+}

@@ -1,0 +1,76 @@
+{
+  "version": 1.0,
+  "waypoints": [
+    {
+      "anchor": {
+        "x": 1.6279768172071953,
+        "y": 6.466867406669286
+      },
+      "prevControl": null,
+      "nextControl": {
+        "x": 1.3473171105886368,
+        "y": 6.642279723305886
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 2.069410314592602,
+        "y": 5.918103237631654
+      },
+      "prevControl": {
+        "x": 4.177302485659102,
+        "y": 8.010495793071359
+      },
+      "nextControl": null,
+      "isLocked": false,
+      "linkedName": null
+    }
+  ],
+  "rotationTargets": [
+    {
+      "waypointRelativePos": 0.3,
+      "rotationDegrees": -165.20300207231904,
+      "rotateFast": false
+    }
+  ],
+  "constraintZones": [],
+  "eventMarkers": [
+    {
+      "name": "StopShooter",
+      "waypointRelativePos": 0.05,
+      "command": {
+        "type": "parallel",
+        "data": {
+          "commands": [
+            {
+              "type": "named",
+              "data": {
+                "name": "StopShooter"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "globalConstraints": {
+    "maxVelocity": 1.75,
+    "maxAcceleration": 1.75,
+    "maxAngularVelocity": 540.0,
+    "maxAngularAcceleration": 720.0
+  },
+  "goalEndState": {
+    "velocity": 0,
+    "rotation": -164.67032640569994,
+    "rotateFast": false
+  },
+  "reversed": false,
+  "folder": "CloseSideFourPieceAuto",
+  "previewStartingState": {
+    "rotation": -146.72511201516497,
+    "velocity": 0
+  },
+  "useDefaultConstraints": false
+}

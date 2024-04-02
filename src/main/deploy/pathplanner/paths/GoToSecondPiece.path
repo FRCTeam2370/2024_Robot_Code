@@ -3,29 +3,29 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 1.4993411183403562,
-        "y": 6.396702480014646
+        "x": 1.6513651260920754,
+        "y": 6.3616200166873265
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.107437149347235,
-        "y": 6.443479097784407
+        "x": 2.2594611570989542,
+        "y": 6.4083966344570875
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 2.9961928869726684,
-        "y": 6.817692039942485
+        "x": 2.820780570336069,
+        "y": 6.958021893251764
       },
       "prevControl": {
-        "x": 2.306648508535996,
-        "y": 6.844212977574666
+        "x": 1.522729427225236,
+        "y": 6.735832958845405
       },
       "nextControl": {
-        "x": 3.6042889179795448,
-        "y": 6.794303731057604
+        "x": 3.207391556262733,
+        "y": 7.024198548500472
       },
       "isLocked": false,
       "linkedName": null
@@ -36,8 +36,8 @@
         "y": 6.232984317820488
       },
       "prevControl": {
-        "x": 1.8267774427286745,
-        "y": 6.320690476138787
+        "x": 1.7800008249589148,
+        "y": 6.174513545608288
       },
       "nextControl": null,
       "isLocked": false,
@@ -47,12 +47,30 @@
   "rotationTargets": [
     {
       "waypointRelativePos": 0.8,
-      "rotationDegrees": -151.95668469420625,
+      "rotationDegrees": -165.599978693209,
       "rotateFast": false
     }
   ],
   "constraintZones": [],
-  "eventMarkers": [],
+  "eventMarkers": [
+    {
+      "name": "StopShooter",
+      "waypointRelativePos": 0.25,
+      "command": {
+        "type": "parallel",
+        "data": {
+          "commands": [
+            {
+              "type": "named",
+              "data": {
+                "name": "StopShooter"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
   "globalConstraints": {
     "maxVelocity": 2.0,
     "maxAcceleration": 2.0,
@@ -61,7 +79,7 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": -157.52056560289685,
+    "rotation": -168.31063082456072,
     "rotateFast": false
   },
   "reversed": false,

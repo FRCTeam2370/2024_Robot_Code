@@ -1,0 +1,67 @@
+{
+  "version": 1.0,
+  "startingPose": {
+    "position": {
+      "x": 0.7976918517959699,
+      "y": 4.5724143870011
+    },
+    "rotation": 120.25643716446478
+  },
+  "command": {
+    "type": "sequential",
+    "data": {
+      "commands": [
+        {
+          "type": "named",
+          "data": {
+            "name": "ShootClose"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "Shoot"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "ScoreFirst"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "Exit"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "DumpClosePiece"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "BlueGetNextPieceAndScore"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "FeedIntake"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "Yeet"
+          }
+        }
+      ]
+    }
+  },
+  "folder": "SorceSideAutos",
+  "choreoAuto": false
+}

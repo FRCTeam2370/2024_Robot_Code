@@ -1,0 +1,49 @@
+{
+  "version": 1.0,
+  "startingPose": {
+    "position": {
+      "x": 1.2420697206066778,
+      "y": 5.578111669043852
+    },
+    "rotation": 180.0
+  },
+  "command": {
+    "type": "sequential",
+    "data": {
+      "commands": [
+        {
+          "type": "named",
+          "data": {
+            "name": "ShootClose"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "Shoot"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "RedStartAndScoreMiddle"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "ShootFar"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "FeedIntake"
+          }
+        }
+      ]
+    }
+  },
+  "folder": "MiddleAutos",
+  "choreoAuto": false
+}

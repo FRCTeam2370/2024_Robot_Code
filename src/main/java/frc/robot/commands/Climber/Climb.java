@@ -30,7 +30,7 @@ public class Climb extends Command {
     if(ClimberSubsystem.UpperLimitSwitch.get() == false){
       ClimberSubsystem.Climb(ClimberSubsystem.ClimberMotor.getPosition().getValueAsDouble());
     }else{
-      ClimberSubsystem.Climb(-30);
+      ClimberSubsystem.Climb(5);
     }
   }
 

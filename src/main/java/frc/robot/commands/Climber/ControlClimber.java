@@ -25,12 +25,10 @@ public class ControlClimber extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    if(RobotContainer.operator.getRawButton(1) == true){
+    if(RobotContainer.operator.getRawButton(3) == true){
       climberSpeed = 0.1;
-    }else if(RobotContainer.operator.getRawButton(2) == true){
+    }else if(RobotContainer.operator.getRawButton(4) == true){
       climberSpeed = 0.2;
-    }else if(RobotContainer.operator.getRawButton(3) == true){
-      climberSpeed = 1;
     }
 
     if(RobotContainer.trigger(RobotContainer.operator, 3).getAsBoolean() == true && ClimberSubsystem.LowerLimitSwitch.get() == true){

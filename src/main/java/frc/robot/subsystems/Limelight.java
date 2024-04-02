@@ -48,7 +48,7 @@ public class Limelight extends SubsystemBase {
   }
 
   public static boolean InLongRange(){
-    if(DistanceFromTarget > 115 && DistanceFromTarget < 185){
+    if(DistanceFromTarget > 90 && DistanceFromTarget < 120){
       return true;
     }else{
       return false;
@@ -56,7 +56,15 @@ public class Limelight extends SubsystemBase {
   }
 
   public static boolean InCloseRange(){
-    if(DistanceFromTarget > 20 && DistanceFromTarget < 70){
+    if(DistanceFromTarget > 20 && DistanceFromTarget < 75){
+      return true;
+    }else{
+      return false;
+    }
+  }
+
+  public static boolean InMidRange(){
+    if(DistanceFromTarget > 80 && DistanceFromTarget < 120){
       return true;
     }else{
       return false;
@@ -69,7 +77,7 @@ public class Limelight extends SubsystemBase {
   }
 
   public static double txSlowlyShoot(){
-    double TX = (tx+5) * 0.1;
+    double TX = (tx) * 0.1;//if there is a spin on the note then use -5 as an offset
     return TX;
   }
 

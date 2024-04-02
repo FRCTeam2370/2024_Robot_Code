@@ -26,10 +26,12 @@ public class ClimberSubsystem extends SubsystemBase {
   
 
   public ClimberSubsystem() {
+    ClimberMotor.setNeutralMode(NeutralModeValue.Brake);
     resetClimber();
   }
 
   public static void readyClimber(double position){
+    ClimberMotor.setNeutralMode(NeutralModeValue.Brake);
     ClimberMotor.setControl(climberDutyCycle.withPosition(position));
   }
 
@@ -39,10 +41,12 @@ public class ClimberSubsystem extends SubsystemBase {
   }
 
   public static void ClimbWithAbsolute(double position){
+    ClimberMotor.setNeutralMode(NeutralModeValue.Brake);
     ClimberMotor.setControl(climberDutyCycle.withPosition(position));
   }
 
   public static void ClimbWithSpeed(double speed){
+    ClimberMotor.setNeutralMode(NeutralModeValue.Brake);
     ClimberMotor.set(speed);
   }
 

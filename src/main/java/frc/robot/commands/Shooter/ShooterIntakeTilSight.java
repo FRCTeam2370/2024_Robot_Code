@@ -31,7 +31,9 @@ public class ShooterIntakeTilSight extends Command {
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-
+    ShooterSubsystem.shooterMotor1.set(0);
+    ShooterSubsystem.shooterMotor2.set(0);
+    IntakeSubsystem.IntakeMotor.set(0);
   }
 
   // Returns true when the command should end.

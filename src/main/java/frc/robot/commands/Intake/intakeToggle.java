@@ -37,15 +37,16 @@ public class intakeToggle extends Command {
   public void end(boolean interrupted) {
     IntakeSubsystem.IntakeMotor.set(0);
     IntakeSubsystem.RiseIntake();
+    LEDSubsystem.youGotTheThing();
+    IntakeSubsystem.runForABit();
   }
 
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    if(IntakeSubsystem.IntakeNoteDetector.getValue() > 1700){//1350 for if the bar on the intake is third from the back
-      IntakeSubsystem.IntakeMotor.set(0.1);
+    if(IntakeSubsystem.IntakeNoteDetector2.get() == false){//IntakeSubsystem.IntakeNoteDetector.getValue() > 1700
+      //IntakeSubsystem.IntakeMotor.set(0.1);
       //IntakeSubsystem.RiseIntake();
-      LEDSubsystem.youGotTheThing();
       return true;
    }
     /*if(IntakeSubsystem.IntakeNoteDetector.getValue() > 1950){

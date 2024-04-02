@@ -14,6 +14,6 @@ public class PieceAmp extends SequentialCommandGroup {
   public PieceAmp() {
     // Add your commands in the addCommands() call, e.g.
     // addCommands(new FooCommand(), new BarCommand());
-    addCommands(new ShooterIntakeTilSight(), new ScoreAmp());
+    addCommands(new ShootClose(),new ShooterIntakeTilSight(), new ScoreAmp());
   }
 }

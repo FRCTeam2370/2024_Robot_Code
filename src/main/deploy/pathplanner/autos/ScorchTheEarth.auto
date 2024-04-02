@@ -1,0 +1,43 @@
+{
+  "version": 1.0,
+  "startingPose": {
+    "position": {
+      "x": 0.400090600751002,
+      "y": 1.9997004096572308
+    },
+    "rotation": 180.0
+  },
+  "command": {
+    "type": "sequential",
+    "data": {
+      "commands": [
+        {
+          "type": "path",
+          "data": {
+            "pathName": "GetToMid"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "Scorching"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "FromScorchingScore"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "FeedIntake"
+          }
+        }
+      ]
+    }
+  },
+  "folder": "SorceSideAutos",
+  "choreoAuto": false
+}

@@ -1,0 +1,210 @@
+{
+  "version": 1.0,
+  "waypoints": [
+    {
+      "anchor": {
+        "x": 1.686447589419395,
+        "y": 4.572414386994017
+      },
+      "prevControl": null,
+      "nextControl": {
+        "x": 1.9904956049228335,
+        "y": 2.3037484251606686
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 5.475353628769935,
+        "y": 1.3331336064381538
+      },
+      "prevControl": {
+        "x": 4.598292045586939,
+        "y": 1.3799102242079144
+      },
+      "nextControl": {
+        "x": 6.211039792418916,
+        "y": 1.2938970110435408
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 8.328727312725281,
+        "y": 2.596102286221667
+      },
+      "prevControl": {
+        "x": 8.72041324307749,
+        "y": 2.2636629671832376
+      },
+      "nextControl": {
+        "x": 6.937122934074927,
+        "y": 3.7772118849081004
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 4.785398516665979,
+        "y": 3.613493722713942
+      },
+      "prevControl": {
+        "x": 5.971086445197035,
+        "y": 4.030855873556874
+      },
+      "nextControl": {
+        "x": 3.3236292113609864,
+        "y": 3.0989509272465843
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 1.861859906055994,
+        "y": 4.4671669970120575
+      },
+      "prevControl": {
+        "x": 1.9671072960379534,
+        "y": 3.040480155034386
+      },
+      "nextControl": null,
+      "isLocked": false,
+      "linkedName": null
+    }
+  ],
+  "rotationTargets": [
+    {
+      "waypointRelativePos": 1.8,
+      "rotationDegrees": -149.65243544179285,
+      "rotateFast": false
+    }
+  ],
+  "constraintZones": [
+    {
+      "name": "SlowtoPiece",
+      "minWaypointRelativePos": 1.6,
+      "maxWaypointRelativePos": 2.1,
+      "constraints": {
+        "maxVelocity": 2.0,
+        "maxAcceleration": 2.0,
+        "maxAngularVelocity": 540.0,
+        "maxAngularAcceleration": 720.0
+      }
+    },
+    {
+      "name": "SlowToShoot",
+      "minWaypointRelativePos": 3.9,
+      "maxWaypointRelativePos": 4.0,
+      "constraints": {
+        "maxVelocity": 2.0,
+        "maxAcceleration": 2.0,
+        "maxAngularVelocity": 540.0,
+        "maxAngularAcceleration": 720.0
+      }
+    }
+  ],
+  "eventMarkers": [
+    {
+      "name": "StopShootAndIntake",
+      "waypointRelativePos": 0.3,
+      "command": {
+        "type": "parallel",
+        "data": {
+          "commands": [
+            {
+              "type": "named",
+              "data": {
+                "name": "StopShooter"
+              }
+            },
+            {
+              "type": "named",
+              "data": {
+                "name": "StopIntake"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "DropIntake",
+      "waypointRelativePos": 1.0,
+      "command": {
+        "type": "parallel",
+        "data": {
+          "commands": [
+            {
+              "type": "named",
+              "data": {
+                "name": "intakeToggle"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Aim",
+      "waypointRelativePos": 3.4,
+      "command": {
+        "type": "parallel",
+        "data": {
+          "commands": [
+            {
+              "type": "named",
+              "data": {
+                "name": "ShootClose"
+              }
+            },
+            {
+              "type": "named",
+              "data": {
+                "name": "Shoot"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "UnderStageSetpoint",
+      "waypointRelativePos": 2.35,
+      "command": {
+        "type": "parallel",
+        "data": {
+          "commands": [
+            {
+              "type": "named",
+              "data": {
+                "name": "ShootClose"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "globalConstraints": {
+    "maxVelocity": 4.0,
+    "maxAcceleration": 4.0,
+    "maxAngularVelocity": 540.0,
+    "maxAngularAcceleration": 720.0
+  },
+  "goalEndState": {
+    "velocity": 0,
+    "rotation": 149.53445508054008,
+    "rotateFast": false
+  },
+  "reversed": false,
+  "folder": "SorceSideAutosNew",
+  "previewStartingState": {
+    "rotation": 139.18491612511846,
+    "velocity": 0
+  },
+  "useDefaultConstraints": false
+}

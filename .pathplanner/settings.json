@@ -3,14 +3,22 @@
   "robotLength": 0.6069,
   "holonomicMode": true,
   "pathFolders": [
+    "AmpSideAutos",
+    "AmpSideFourPieceMid",
     "CloseSideFourPieceAuto",
     "CloseSideThreePieceAuto",
-    "TestAutoPaths",
+    "MiddleAutos",
+    "SorceSideAutosNew",
     "ScootAuto",
+    "ScorchingTheEarthAuto",
     "ShootAndBackAwayAuto",
-    "SorceSideAutos"
+    "SorceSideAutos",
+    "TestAutoPaths"
   ],
   "autoFolders": [
+    "AmpSide",
+    "MiddleAutos",
+    "NewSourceSideAutos",
     "SorceSideAutos"
   ],
   "defaultMaxVel": 3.0,

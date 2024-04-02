@@ -1,0 +1,121 @@
+{
+  "version": 1.0,
+  "waypoints": [
+    {
+      "anchor": {
+        "x": 5.814484107600694,
+        "y": 1.8944530196752711
+      },
+      "prevControl": null,
+      "nextControl": {
+        "x": 5.004087537866289,
+        "y": 2.242444389876904
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 7.8726552894701225,
+        "y": 2.4206899695850677
+      },
+      "prevControl": {
+        "x": 7.916832427620713,
+        "y": 2.4486800647491824
+      },
+      "nextControl": {
+        "x": 4.808786825550858,
+        "y": 0.4794603321400381
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 1.5812001994374358,
+        "y": 4.385307915914978
+      },
+      "prevControl": {
+        "x": 0.6159741359686814,
+        "y": 3.4785804017473607
+      },
+      "nextControl": null,
+      "isLocked": false,
+      "linkedName": null
+    }
+  ],
+  "rotationTargets": [
+    {
+      "waypointRelativePos": 0.7,
+      "rotationDegrees": -170.1293958009343,
+      "rotateFast": false
+    }
+  ],
+  "constraintZones": [],
+  "eventMarkers": [
+    {
+      "name": "Stop Shooter and Lower Intake",
+      "waypointRelativePos": 0.05,
+      "command": {
+        "type": "parallel",
+        "data": {
+          "commands": [
+            {
+              "type": "named",
+              "data": {
+                "name": "StopShooter"
+              }
+            },
+            {
+              "type": "named",
+              "data": {
+                "name": "intakeToggle"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Aim",
+      "waypointRelativePos": 1.6,
+      "command": {
+        "type": "parallel",
+        "data": {
+          "commands": [
+            {
+              "type": "named",
+              "data": {
+                "name": "ShootClose"
+              }
+            },
+            {
+              "type": "named",
+              "data": {
+                "name": "Shoot"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "globalConstraints": {
+    "maxVelocity": 3.5,
+    "maxAcceleration": 3.5,
+    "maxAngularVelocity": 540.0,
+    "maxAngularAcceleration": 720.0
+  },
+  "goalEndState": {
+    "velocity": 0,
+    "rotation": 151.8214098900408,
+    "rotateFast": false
+  },
+  "reversed": false,
+  "folder": "SorceSideAutos",
+  "previewStartingState": {
+    "rotation": 172.69424046668925,
+    "velocity": 0
+  },
+  "useDefaultConstraints": false
+}

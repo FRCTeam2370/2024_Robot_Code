@@ -3,41 +3,41 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 6.32902690306805,
-        "y": 1.9178413285601514
+        "x": 5.814484107600694,
+        "y": 1.8944530196752711
       },
       "prevControl": null,
       "nextControl": {
-        "x": 7.042370324056887,
-        "y": 1.8242880930206316
+        "x": 5.004087537866289,
+        "y": 2.242444389876904
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 8.14162084164624,
-        "y": 2.479160741797268
+        "x": 7.8726552894701225,
+        "y": 2.4206899695850677
       },
       "prevControl": {
-        "x": 8.347090867365583,
-        "y": 2.6052646631615004
+        "x": 7.916832427620713,
+        "y": 2.4486800647491824
       },
       "nextControl": {
-        "x": 5.416882856557735,
-        "y": 0.8068966565283563
+        "x": 4.808786825550858,
+        "y": 0.4794603321400381
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 1.6045885083223155,
-        "y": 3.9058475837749405
+        "x": 2.072354686019913,
+        "y": 3.8239885026778606
       },
       "prevControl": {
-        "x": 3.3236292113609864,
-        "y": 2.23358349850603
+        "x": 1.1071286225511587,
+        "y": 2.9172609885102436
       },
       "nextControl": null,
       "isLocked": false,
@@ -47,15 +47,15 @@
   "rotationTargets": [
     {
       "waypointRelativePos": 0.7,
-      "rotationDegrees": -154.35554537472524,
+      "rotationDegrees": -170.1293958009343,
       "rotateFast": false
     }
   ],
   "constraintZones": [],
   "eventMarkers": [
     {
-      "name": "ReadyShooter",
-      "waypointRelativePos": 1.8,
+      "name": "Stop Shooter and Lower Intake",
+      "waypointRelativePos": 0.05,
       "command": {
         "type": "parallel",
         "data": {
@@ -63,20 +63,9 @@
             {
               "type": "named",
               "data": {
-                "name": "ShootFar"
+                "name": "StopShooter"
               }
-            }
-          ]
-        }
-      }
-    },
-    {
-      "name": "IntakeToggle",
-      "waypointRelativePos": 0.2,
-      "command": {
-        "type": "parallel",
-        "data": {
-          "commands": [
+            },
             {
               "type": "named",
               "data": {
@@ -86,17 +75,40 @@
           ]
         }
       }
+    },
+    {
+      "name": "Aim",
+      "waypointRelativePos": 1.6,
+      "command": {
+        "type": "parallel",
+        "data": {
+          "commands": [
+            {
+              "type": "named",
+              "data": {
+                "name": "ShootFar"
+              }
+            },
+            {
+              "type": "named",
+              "data": {
+                "name": "Shoot"
+              }
+            }
+          ]
+        }
+      }
     }
   ],
   "globalConstraints": {
-    "maxVelocity": 2.0,
-    "maxAcceleration": 2.0,
+    "maxVelocity": 3.5,
+    "maxAcceleration": 3.5,
     "maxAngularVelocity": 540.0,
     "maxAngularAcceleration": 720.0
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 144.24611274556332,
+    "rotation": 139.96974072811037,
     "rotateFast": false
   },
   "reversed": false,

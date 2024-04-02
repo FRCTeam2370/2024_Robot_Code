@@ -8,32 +8,38 @@
       },
       "prevControl": null,
       "nextControl": {
-        "x": 0.7743035429110899,
-        "y": 0.7835083476505611
+        "x": 1.7800008249589148,
+        "y": 3.7421294215807808
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 8.001290988336962,
-        "y": 0.877061583182996
+        "x": 7.8726552894701225,
+        "y": 0.8302849654132366
       },
       "prevControl": {
-        "x": 5.159611458826067,
-        "y": 2.1634185718584735
+        "x": 1.2771521839339974,
+        "y": 1.7073465485962305
       },
       "nextControl": null,
       "isLocked": false,
       "linkedName": null
     }
   ],
-  "rotationTargets": [],
+  "rotationTargets": [
+    {
+      "waypointRelativePos": 0.25,
+      "rotationDegrees": 112.5285861034038,
+      "rotateFast": false
+    }
+  ],
   "constraintZones": [],
   "eventMarkers": [
     {
-      "name": "Shoot",
-      "waypointRelativePos": 0.0,
+      "name": "Feed Shooter",
+      "waypointRelativePos": 0.05,
       "command": {
         "type": "parallel",
         "data": {
@@ -41,13 +47,7 @@
             {
               "type": "named",
               "data": {
-                "name": "ShootClose"
-              }
-            },
-            {
-              "type": "named",
-              "data": {
-                "name": "RunShooter"
+                "name": "FeedIntake"
               }
             }
           ]
@@ -55,8 +55,8 @@
       }
     },
     {
-      "name": "StopShooter",
-      "waypointRelativePos": 0.15,
+      "name": "Stop Shooter and Lower Intake",
+      "waypointRelativePos": 0.5,
       "command": {
         "type": "parallel",
         "data": {
@@ -66,18 +66,7 @@
               "data": {
                 "name": "StopShooter"
               }
-            }
-          ]
-        }
-      }
-    },
-    {
-      "name": "StartIntake",
-      "waypointRelativePos": 0.7,
-      "command": {
-        "type": "parallel",
-        "data": {
-          "commands": [
+            },
             {
               "type": "named",
               "data": {
@@ -87,17 +76,34 @@
           ]
         }
       }
+    },
+    {
+      "name": "StartShooterAgain",
+      "waypointRelativePos": 0.9,
+      "command": {
+        "type": "parallel",
+        "data": {
+          "commands": [
+            {
+              "type": "named",
+              "data": {
+                "name": "Shoot"
+              }
+            }
+          ]
+        }
+      }
     }
   ],
   "globalConstraints": {
-    "maxVelocity": 2.0,
-    "maxAcceleration": 2.0,
+    "maxVelocity": 3.5,
+    "maxAcceleration": 3.5,
     "maxAngularVelocity": 540.0,
     "maxAngularAcceleration": 720.0
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 164.744881296942,
+    "rotation": 176.4236656250029,
     "rotateFast": false
   },
   "reversed": false,
