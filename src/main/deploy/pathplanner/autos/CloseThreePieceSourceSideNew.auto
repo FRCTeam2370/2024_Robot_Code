@@ -2,10 +2,10 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 0.79769185179396,
-      "y": 6.537032333323926
+      "x": 0.77430354290908,
+      "y": 4.560720232551577
     },
-    "rotation": -122.73522627210768
+    "rotation": 119.14807184571306
   },
   "command": {
     "type": "sequential",
@@ -14,25 +14,37 @@
         {
           "type": "named",
           "data": {
-            "name": "ShootMid"
+            "name": "Shoot"
           }
         },
         {
           "type": "named",
           "data": {
-            "name": "Shoot"
+            "name": "ShootMid"
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": "ScoreFirstAmpSide"
+            "pathName": "SourceSideScoreFirstPiece"
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": "GetSecondPiceAmpSide"
+            "pathName": "SouceSideScoreClose3"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "FeedIntake"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "SourceSideGetPieceMid5"
           }
         },
         {
@@ -44,6 +56,6 @@
       ]
     }
   },
-  "folder": "AmpSide",
+  "folder": "NewSourceSideAutos",
   "choreoAuto": false
 }

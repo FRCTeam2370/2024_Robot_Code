@@ -24,11 +24,12 @@ public class Amped extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-      if(LEDSubsystem.isBlue() == true){
+      /*if(LEDSubsystem.isBlue() == true){
       LEDSubsystem.setBlue();
       }else if(LEDSubsystem.isBlue() == false){
       LEDSubsystem.setPink();
-      }
+      }*/
+      LEDSubsystem.setBlue();
     
     
   }

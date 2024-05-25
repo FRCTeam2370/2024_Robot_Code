@@ -73,9 +73,9 @@ public class IntakeSubsystem extends SubsystemBase {
   
   public static void setIntakePostition(double position){
     double kI = position < IntakePoseEncoder.getPosition().getValueAsDouble() ? 0 : 0;//0.18,   0.2, 0.5
-    double kP = position < IntakePoseEncoder.getPosition().getValueAsDouble() ? 1.5 : 8.4;//3,   7, 7.75
+    double kP = position < IntakePoseEncoder.getPosition().getValueAsDouble() ? 1.5 : 8.42;//3,   7, 7.75
     double kD = position < IntakePoseEncoder.getPosition().getValueAsDouble() ? 0 : 0.1;//0.02
-    double kG = position < IntakePoseEncoder.getPosition().getValueAsDouble() ? 0.03 : 0.035;
+    double kG = position < IntakePoseEncoder.getPosition().getValueAsDouble() ? 0.025 : 0.033;//0.035
     IntakePositionconfig.Slot0.kP = kP;
     IntakePositionconfig.Slot0.kI = kI;
     IntakePositionconfig.Slot0.kG = kG;//0.1,  0.25, 1
@@ -101,13 +101,14 @@ public class IntakeSubsystem extends SubsystemBase {
   public static void resetIntake(){
     PositionIntakeMotor.setNeutralMode(NeutralModeValue.Brake);
     PositionIntakeMotor.setPosition(0);
-    //IntakePositionconfig.Feedback.FeedbackRemoteSensorID = IntakePoseEncoder.getDeviceID();
+    IntakePositionconfig.Feedback.FeedbackRemoteSensorID = IntakePoseEncoder.getDeviceID();
     
     IntakePoseConfig.MagnetSensor.AbsoluteSensorRange = AbsoluteSensorRangeValue.Unsigned_0To1;
     IntakePoseEncoder.getConfigurator().apply(IntakePoseConfig);
 
     intakeFeedbackConfig.FeedbackRemoteSensorID = IntakePoseEncoder.getDeviceID();
-    intakeFeedbackConfig.FeedbackSensorSource = FeedbackSensorSourceValue.RemoteCANcoder;
+
+    intakeFeedbackConfig.FeedbackSensorSource = FeedbackSensorSourceValue.RemoteCANcoder;//
     IntakePositionconfig.withFeedback(intakeFeedbackConfig);
 
     PositionIntakeMotor.getConfigurator().apply(IntakePositionconfig);
@@ -118,7 +119,7 @@ public class IntakeSubsystem extends SubsystemBase {
     IntakePoseEncoder.setPosition(0);//IntakePoseEncoder.getAbsolutePosition().getValueAsDouble()-0.063721
     //IntakeMotor.getPosition().setUpdateFrequency(0);
     IntakeMotor.getVelocity().setUpdateFrequency(0);
-    PositionIntakeMotor.getVelocity().setUpdateFrequency(0);
+    //PositionIntakeMotor.getVelocity().setUpdateFrequency(0);
   }
 
   public static void ForwardIntake(){
@@ -138,14 +139,22 @@ public class IntakeSubsystem extends SubsystemBase {
   public static void runForABit(){
     IntakeMotor.setPosition(0);
     PositionDutyCycle pose = new PositionDutyCycle(IntakeMotor.getPosition().getValueAsDouble());
-    IntakeMotor.setControl(pose.withPosition(IntakeMotor.getPosition().getValueAsDouble()+4));
+    IntakeMotor.setControl(pose.withPosition(IntakeMotor.getPosition().getValueAsDouble()+2));
   }
 
+  public static void moveIntakeBack(double speed){
+    PositionIntakeMotor.set(speed);
+  }
+
+  public static void resetIntakePose(){
+    PositionIntakeMotor.setPosition(0);
+    IntakePoseEncoder.setPosition(0);
+  }
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
     SmartDashboard.putNumber("Intake note detector", IntakeNoteDetector.getValue());
-    SmartDashboard.putNumber("Intake Position Motor", PositionIntakeMotor.getPosition().getValueAsDouble());
+    SmartDashboard.putNumber("Intake Position Motor anfopiwne", PositionIntakeMotor.getPosition().getValueAsDouble());
     SmartDashboard.putNumber("Intake Relative Pose", IntakePoseEncoder.getPosition().getValueAsDouble());
     SmartDashboard.putBoolean("Intake Not Detector 1", IntakeNoteDetector2.get());
     SmartDashboard.putNumber("Rollers Intake Pose", IntakeMotor.getPosition().getValueAsDouble());

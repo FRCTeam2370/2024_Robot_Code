@@ -34,15 +34,15 @@ public class LimelightLEDs extends Command {
     if(Limelight.InLongRange() == true){
       LEDSubsystem.setGreen();
       ElevatorSubsystem.setElevator(0.1);
-      IntakeSubsystem.setIntakePostition(0.01);
-      ShooterSubsystem.aimShooter(5.4);
+      IntakeSubsystem.setIntakePostition(0.01154);// 0.009
+      ShooterSubsystem.aimShooter(5.425);//5.35, //5.43, //4.75 for some ODD reason
     }else if(Limelight.InCloseRange() == true){
       LEDSubsystem.setGreen();
       ElevatorSubsystem.setElevator(0.1);
-      IntakeSubsystem.setIntakePostition(0.006);
-      ShooterSubsystem.aimShooter(3.35);
+      IntakeSubsystem.setIntakePostition(0.00154);
+      ShooterSubsystem.aimShooter(3.6);
     }/*else if(Limelight.InMidRange() == true){
-      LEDSubsystem.setGreen();
+      LEDSubsystem.setGreen(); 
       ElevatorSubsystem.setElevator(0.1);
       IntakeSubsystem.setIntakePostition(0.013);
       ShooterSubsystem.aimShooter(5.6);
@@ -51,7 +51,7 @@ public class LimelightLEDs extends Command {
     }
     
 
-    ShooterSubsystem.runShooter(-90);
+    ShooterSubsystem.runShooter(-95);
   }
 
   // Called once the command ends or is interrupted.

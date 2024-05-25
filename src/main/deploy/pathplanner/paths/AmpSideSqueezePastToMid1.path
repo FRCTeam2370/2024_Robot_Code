@@ -3,41 +3,73 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 1.7916949794013546,
-        "y": 6.4902557155541665
+        "x": 1.6045885083223155,
+        "y": 6.805997885500045
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.7916949794013566,
-        "y": 6.4902557155541665
+        "x": 2.0138839138077134,
+        "y": 7.64797700535572
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 8.35211562161016,
+        "x": 3.276852593591227,
+        "y": 7.68305946868304
+      },
+      "prevControl": {
+        "x": 1.8033891338437944,
+        "y": 7.6713653142406
+      },
+      "nextControl": {
+        "x": 4.276821100999854,
+        "y": 7.690995726678346
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 8.609387019343838,
         "y": 7.390705607622041
       },
       "prevControl": {
-        "x": 7.352982548517808,
-        "y": 7.432336152334223
+        "x": 8.03637345166428,
+        "y": 7.390705607622041
       },
       "nextControl": {
-        "x": 8.913435034847279,
-        "y": 7.367317298737161
+        "x": 9.126051649773807,
+        "y": 7.390705607622041
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 1.7916949794013546,
-        "y": 6.4902557155541665
+        "x": 2.4348734737355513,
+        "y": 7.80000101310744
       },
       "prevControl": {
-        "x": 2.1892962304443127,
-        "y": 6.759221267730284
+        "x": 3.3933134259345192,
+        "y": 7.769083595294573
+      },
+      "nextControl": {
+        "x": 1.7098358983042758,
+        "y": 7.823389321992319
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 1.148516485067158,
+        "y": 6.677362186633205
+      },
+      "prevControl": {
+        "x": 1.5928943538798759,
+        "y": 7.531035460931321
       },
       "nextControl": null,
       "isLocked": false,
@@ -46,8 +78,18 @@
   ],
   "rotationTargets": [
     {
-      "waypointRelativePos": 0.85,
-      "rotationDegrees": -179.33052451498256,
+      "waypointRelativePos": 0.5,
+      "rotationDegrees": -177.55700930305017,
+      "rotateFast": false
+    },
+    {
+      "waypointRelativePos": 1.85,
+      "rotationDegrees": 174.30009886900595,
+      "rotateFast": false
+    },
+    {
+      "waypointRelativePos": 3.45,
+      "rotationDegrees": -171.650682179768,
       "rotateFast": false
     }
   ],
@@ -55,7 +97,7 @@
   "eventMarkers": [
     {
       "name": "StopEverything",
-      "waypointRelativePos": 0.25,
+      "waypointRelativePos": 0.35,
       "command": {
         "type": "parallel",
         "data": {
@@ -63,13 +105,13 @@
             {
               "type": "named",
               "data": {
-                "name": "StopIntake"
+                "name": "StopShooter"
               }
             },
             {
               "type": "named",
               "data": {
-                "name": "StopShooter"
+                "name": "StopIntake"
               }
             }
           ]
@@ -78,7 +120,7 @@
     },
     {
       "name": "IntakeToggle",
-      "waypointRelativePos": 0.45,
+      "waypointRelativePos": 1.45,
       "command": {
         "type": "parallel",
         "data": {
@@ -95,7 +137,7 @@
     },
     {
       "name": "Aim",
-      "waypointRelativePos": 1.75,
+      "waypointRelativePos": 3.6,
       "command": {
         "type": "parallel",
         "data": {
@@ -103,7 +145,7 @@
             {
               "type": "named",
               "data": {
-                "name": "ShootMid"
+                "name": "ShootClose"
               }
             },
             {
@@ -125,13 +167,13 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": -150.75117366345296,
+    "rotation": -139.18491612511846,
     "rotateFast": false
   },
   "reversed": false,
-  "folder": "AmpSideAutos",
+  "folder": "MiddleAutos",
   "previewStartingState": {
-    "rotation": -158.96248897457832,
+    "rotation": -147.8042660652867,
     "velocity": 0
   },
   "useDefaultConstraints": false

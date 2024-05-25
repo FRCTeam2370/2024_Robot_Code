@@ -2,17 +2,18 @@
 // Open Source Software; you can modify and/or share it under the terms of
 // the WPILib BSD license file in the root directory of this project.
 
-package frc.robot.commands.Shooter;
+package frc.robot.commands.Intake;
 
 import edu.wpi.first.wpilibj2.command.Command;
-import frc.robot.subsystems.ShooterSubsystem;
+import frc.robot.RobotContainer;
+import frc.robot.subsystems.IntakeSubsystem;
 
-public class ShootFast extends Command {
-  /** Creates a new Shoot. */
-  ShooterSubsystem mShooterSubsystem = new ShooterSubsystem();
-  public ShootFast() {
+public class ResetIntakeManual extends Command {
+  private static IntakeSubsystem mIntakeSubsystem = new IntakeSubsystem();
+  /** Creates a new ResetIntakeManual. */
+  public ResetIntakeManual() {
     // Use addRequirements() here to declare subsystem dependencies.
-    addRequirements(mShooterSubsystem);
+    addRequirements(mIntakeSubsystem);
   }
 
   // Called when the command is initially scheduled.
@@ -22,13 +23,19 @@ public class ShootFast extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    ShooterSubsystem.runShooter(-95);
+    if(RobotContainer.operator.getRawAxis(1)> 0.9){
+      IntakeSubsystem.moveIntakeBack(-0.15);
+    }else if(RobotContainer.operatorM2.getAsBoolean() == true){
+      IntakeSubsystem.resetIntakePose();
+    }else{
+      IntakeSubsystem.moveIntakeBack(0);
+    }
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    ShooterSubsystem.runShooter(0);
+    IntakeSubsystem.moveIntakeBack(0);
   }
 
   // Returns true when the command should end.

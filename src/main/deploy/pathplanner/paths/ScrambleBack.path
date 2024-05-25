@@ -1,0 +1,96 @@
+{
+  "version": 1.0,
+  "waypoints": [
+    {
+      "anchor": {
+        "x": 8.398892239378778,
+        "y": 7.671365314245157
+      },
+      "prevControl": null,
+      "nextControl": {
+        "x": 8.854964262633935,
+        "y": 7.729836086457356
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 8.644469482671159,
+        "y": 4.209895599278378
+      },
+      "prevControl": {
+        "x": 9.065459042598997,
+        "y": 5.332534425752613
+      },
+      "nextControl": {
+        "x": 8.298727779200147,
+        "y": 3.287917723355683
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 8.515833783804318,
+        "y": 0.7133434209888375
+      },
+      "prevControl": {
+        "x": 8.083150069434039,
+        "y": 0.19880062552148015
+      },
+      "nextControl": null,
+      "isLocked": false,
+      "linkedName": null
+    }
+  ],
+  "rotationTargets": [
+    {
+      "waypointRelativePos": 0.5,
+      "rotationDegrees": 157.31944039282882,
+      "rotateFast": true
+    },
+    {
+      "waypointRelativePos": 1.6,
+      "rotationDegrees": 15.183537384209068,
+      "rotateFast": false
+    },
+    {
+      "waypointRelativePos": 0.95,
+      "rotationDegrees": -89.20085615151945,
+      "rotateFast": true
+    }
+  ],
+  "constraintZones": [
+    {
+      "name": "SlowSpin",
+      "minWaypointRelativePos": 0.55,
+      "maxWaypointRelativePos": 0.8,
+      "constraints": {
+        "maxVelocity": 2.0,
+        "maxAcceleration": 2.0,
+        "maxAngularVelocity": 540.0,
+        "maxAngularAcceleration": 720.0
+      }
+    }
+  ],
+  "eventMarkers": [],
+  "globalConstraints": {
+    "maxVelocity": 5.0,
+    "maxAcceleration": 5.0,
+    "maxAngularVelocity": 540.0,
+    "maxAngularAcceleration": 720.0
+  },
+  "goalEndState": {
+    "velocity": 0,
+    "rotation": 24.443954781067742,
+    "rotateFast": false
+  },
+  "reversed": false,
+  "folder": "High-Speed Scramble",
+  "previewStartingState": {
+    "rotation": 0,
+    "velocity": 0
+  },
+  "useDefaultConstraints": false
+}

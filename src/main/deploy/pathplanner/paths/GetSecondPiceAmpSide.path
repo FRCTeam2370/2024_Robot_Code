@@ -16,28 +16,28 @@
     },
     {
       "anchor": {
-        "x": 2.70383902591167,
-        "y": 6.922939429924444
+        "x": 2.7389214892389893,
+        "y": 6.9346335843668845
       },
       "prevControl": {
-        "x": 1.8384715971711147,
-        "y": 6.852774503269805
+        "x": 1.873554060498434,
+        "y": 6.864468657712245
       },
       "nextControl": {
-        "x": 3.6142688016759705,
-        "y": 6.996758060391819
+        "x": 3.6493512650032898,
+        "y": 7.00845221483426
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 1.7566125160740347,
-        "y": 6.420090788899527
+        "x": 1.721530052746715,
+        "y": 6.689056341075646
       },
       "prevControl": {
-        "x": 1.905787882800837,
-        "y": 6.227137240599268
+        "x": 1.8707054194735173,
+        "y": 6.496102792775387
       },
       "nextControl": null,
       "isLocked": false,
@@ -46,12 +46,24 @@
   ],
   "rotationTargets": [
     {
-      "waypointRelativePos": 0.95,
-      "rotationDegrees": -169.03961519723305,
+      "waypointRelativePos": 0.75,
+      "rotationDegrees": -174.33734954708086,
       "rotateFast": false
     }
   ],
-  "constraintZones": [],
+  "constraintZones": [
+    {
+      "name": "SlowToPiece",
+      "minWaypointRelativePos": 0,
+      "maxWaypointRelativePos": 0.95,
+      "constraints": {
+        "maxVelocity": 0.5,
+        "maxAcceleration": 0.5,
+        "maxAngularVelocity": 540.0,
+        "maxAngularAcceleration": 720.0
+      }
+    }
+  ],
   "eventMarkers": [
     {
       "name": "IntakeToggle",
@@ -107,20 +119,20 @@
     }
   ],
   "globalConstraints": {
-    "maxVelocity": 1.0,
-    "maxAcceleration": 1.0,
+    "maxVelocity": 2.0,
+    "maxAcceleration": 2.0,
     "maxAngularVelocity": 540.0,
     "maxAngularAcceleration": 720.0
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": -147.38075692880707,
+    "rotation": -149.7435628364707,
     "rotateFast": false
   },
   "reversed": false,
   "folder": "AmpSideAutos",
   "previewStartingState": {
-    "rotation": -123.02386755579654,
+    "rotation": -126.52885536698521,
     "velocity": 0
   },
   "useDefaultConstraints": false

@@ -11,6 +11,7 @@ import com.pathplanner.lib.auto.AutoBuilder;
 import com.pathplanner.lib.auto.NamedCommands;
 
 import edu.wpi.first.math.controller.PIDController;
+import edu.wpi.first.math.filter.SlewRateLimiter;
 import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.geometry.Translation2d;
@@ -27,6 +28,7 @@ import frc.robot.commands.Climber.ControlClimber;
 import frc.robot.commands.Climber.ReadyClimber;
 import frc.robot.commands.Intake.FeedIntake;
 import frc.robot.commands.Intake.IntakeAbsoluteTest;
+import frc.robot.commands.Intake.ResetIntakeManual;
 import frc.robot.commands.Intake.ReverseIntake;
 import frc.robot.commands.Intake.StopIntake;
 import frc.robot.commands.Intake.StoreIntake;
@@ -35,6 +37,7 @@ import frc.robot.commands.LED.Amped;
 import frc.robot.commands.LED.LimelightLEDs;
 import frc.robot.commands.LED.setColors;
 import frc.robot.commands.Shooter.PieceAmp;
+import frc.robot.commands.Shooter.ReverseShooter;
 import frc.robot.commands.Shooter.RunShooter;
 import frc.robot.commands.Shooter.RunShooterSlow;
 import frc.robot.commands.Shooter.ScoreTrap;
@@ -43,6 +46,7 @@ import frc.robot.commands.Shooter.ShootClose;
 import frc.robot.commands.Shooter.ShootFar;
 import frc.robot.commands.Shooter.ShootFast;
 import frc.robot.commands.Shooter.ShootMid;
+import frc.robot.commands.Shooter.ShootSlower;
 import frc.robot.commands.Shooter.ShootWayFar;
 import frc.robot.commands.Shooter.ShooterToggle;
 import frc.robot.commands.Shooter.StopShooter;
@@ -83,6 +87,7 @@ public class RobotContainer {
   public static JoystickButton Menu = new JoystickButton(driver, 7);
   public static POVButton UpDpad = new POVButton(driver, 0);
   public static POVButton downDpad = new POVButton(driver, 180);
+  public static POVButton leftDpad = new POVButton(driver, 270);
   public static JoystickButton M1 = new JoystickButton(driver, 9);
   public static JoystickButton M2 = new JoystickButton(driver, 10);
   public static POVButton rightDpad = new POVButton(driver, 90);
@@ -98,6 +103,7 @@ public class RobotContainer {
   public static JoystickButton operatorStart = new JoystickButton(operator, 7);
   public static JoystickButton operatorMenu = new JoystickButton(operator, 8);
   public static JoystickButton operatorRightButton = new JoystickButton(operator, 6);
+  public static JoystickButton operatorM2 = new JoystickButton(operator, 10);
   
   public static final SwerveRequest.FieldCentric drive = new SwerveRequest.FieldCentric()
       .withDeadband(MaxSpeed * 0.1).withRotationalDeadband(MaxAngularRate * 0.1) // Add a 10% deadband
@@ -124,12 +130,13 @@ public class RobotContainer {
 
 
   private void configureBindings() {
-   
+   SlewRateLimiter xLimiter = new SlewRateLimiter(5.8);
+   SlewRateLimiter yLimiter = new SlewRateLimiter(5.8);
 
     drivetrain.setDefaultCommand( // Drivetrain will execute this command periodically
-        drivetrain.applyRequest(() -> drive.withVelocityX(-joystick.getLeftY() * MaxSpeed) // Drive forward with
+        drivetrain.applyRequest(() -> drive.withVelocityX(yLimiter.calculate((-joystick.getLeftY() * MaxSpeed))) // Drive forward with
                                                                                            // negative Y (forward)
-            .withVelocityY(-joystick.getLeftX() * MaxSpeed) // Drive left with negative X (left)
+            .withVelocityY(xLimiter.calculate((-joystick.getLeftX() * MaxSpeed))) // Drive left with negative X (left)
             .withRotationalRate(-joystick.getRightX() * MaxAngularRate) // Drive counterclockwise with negative X (left)
         ));
 
@@ -176,6 +183,7 @@ public class RobotContainer {
     //Stores the shooter to a position where the robot can go under the stage
     B.toggleOnTrue(new StoreShooter());
 
+
     //readies the shooter, intake, and elevator for close up shooting
     M1.onTrue(new ShootClose());
 
@@ -192,13 +200,14 @@ public class RobotContainer {
     A.toggleOnTrue(drivetrain.applyRequest(()-> drive.withVelocityX((-joystick.getLeftY() * MaxSpeed)* 0.75).withVelocityY((-joystick.getLeftX() * MaxSpeed)* 0.75).withRotationalRate(LimelightTurnPID.calculate(Limelight.txSlowlyShoot()))).alongWith(new LimelightLEDs()));
     //A.toggleOnTrue(new AlignToTag(mLimelight));
 
+    leftDpad.whileTrue(new ReverseShooter());
     
     //This Command acts a bit wierd don't use it quite yet
     //rightDpad.toggleOnTrue(drivetrain.applyRPequest(()-> drive.withVelocityX(-joystick.getLeftY() * MaxSpeed).withVelocityY(-Limelight.txSlowly()).withRotationalRate(-Limelight.txSlowly())));
 
     operatorStart.toggleOnTrue(new setColors());
 
-    operatorRightButton.whileTrue(new Amped(mLEDSubsystem));
+    //operatorRightButton.whileTrue(new Amped(mLEDSubsystem));
 
     operatorDown.toggleOnTrue(new ShootMid());
 
@@ -208,7 +217,7 @@ public class RobotContainer {
 
     operatorB.onTrue(new ReadyClimber());
 
-
+    operatorRightButton.whileTrue(new ResetIntakeManual());
 
   }
 
@@ -226,6 +235,7 @@ public class RobotContainer {
     NamedCommands.registerCommand("Shoot", new Shoot());
     NamedCommands.registerCommand("StopIntake", new StopIntake());
     NamedCommands.registerCommand("ShootMid", new ShootMid());
+    NamedCommands.registerCommand("ShootSlower", new ShootSlower());
     //NamedCommands.registerCommand("AlignToTag", drivetrain.applyRequest(()-> drive.withVelocityX((-joystick.getLeftY() * MaxSpeed)* 0.75).withVelocityY((-joystick.getLeftX() * MaxSpeed)* 0.75).withRotationalRate(LimelightTurnPID.calculate(Limelight.txSlowlyShoot()))));
 
     AutoChooser = AutoBuilder.buildAutoChooser();

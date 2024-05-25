@@ -1,0 +1,52 @@
+{
+  "version": 1.0,
+  "waypoints": [
+    {
+      "anchor": {
+        "x": 1.5461177361101157,
+        "y": 1.9529237918874702
+      },
+      "prevControl": null,
+      "nextControl": {
+        "x": 2.5461177361101166,
+        "y": 1.9529237918874702
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 8.270256540513081,
+        "y": 0.7133434209888375
+      },
+      "prevControl": {
+        "x": 10.24656864128543,
+        "y": 2.0464770274269917
+      },
+      "nextControl": null,
+      "isLocked": false,
+      "linkedName": null
+    }
+  ],
+  "rotationTargets": [],
+  "constraintZones": [],
+  "eventMarkers": [],
+  "globalConstraints": {
+    "maxVelocity": 5.0,
+    "maxAcceleration": 5.0,
+    "maxAngularVelocity": 540.0,
+    "maxAngularAcceleration": 720.0
+  },
+  "goalEndState": {
+    "velocity": 0,
+    "rotation": 60.80251395393545,
+    "rotateFast": false
+  },
+  "reversed": false,
+  "folder": "High-Speed Scramble",
+  "previewStartingState": {
+    "rotation": 177.39743779750015,
+    "velocity": 0
+  },
+  "useDefaultConstraints": false
+}

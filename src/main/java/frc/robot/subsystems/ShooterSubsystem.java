@@ -51,13 +51,14 @@ public class ShooterSubsystem extends SubsystemBase {
 
   public static void resetShooter(){
     shooterMotor1config.Slot0.kP = 0.035;
-    shooterMotor2config.Slot0.kP = 0.035;
+    shooterMotor2config.Slot0.kP = 0.03;
     shooterMotor1config.ClosedLoopRamps.DutyCycleClosedLoopRampPeriod = Constants.ShooterConstants.ShooterClosedLoopRamp;
     shooterMotor2config.ClosedLoopRamps.DutyCycleClosedLoopRampPeriod = Constants.ShooterConstants.ShooterClosedLoopRamp;
+    shooterMotor2config.CurrentLimits.StatorCurrentLimit = 30;
     shooterMotor1.getConfigurator().apply(shooterMotor1config);
     shooterMotor2.getConfigurator().apply(shooterMotor2config);
-    shooterMotor1.setNeutralMode(NeutralModeValue.Coast);
-    shooterMotor2.setNeutralMode(NeutralModeValue.Coast);
+    shooterMotor1.setNeutralMode(NeutralModeValue.Brake);
+    shooterMotor2.setNeutralMode(NeutralModeValue.Brake);
     shooterMotor1.getPosition().setUpdateFrequency(0);  
     shooterMotor2.getPosition().setUpdateFrequency(0);
     shooterMotor1.setInverted(true);
@@ -67,8 +68,14 @@ public class ShooterSubsystem extends SubsystemBase {
   public static void runShooter(double shooterSpeed){
       /*shooterMotor1.set(shooterSpeed*0.95);
       shooterMotor2.set(shooterSpeed);//* 1.05*/
-      shooterMotor1.setControl(shooterVelocityDC.withVelocity(shooterSpeed));
-      shooterMotor2.setControl(shooterVelocityDC.withVelocity(shooterSpeed*0.77)); 
+      if(shooterSpeed < -10 || shooterSpeed > 5){
+        shooterMotor1.setControl(shooterVelocityDC.withVelocity(shooterSpeed));
+        shooterMotor2.setControl(shooterVelocityDC.withVelocity(shooterSpeed)); //*0.85 */
+      }else{
+        shooterMotor1.set(0);
+        shooterMotor2.set(0);
+      }
+      
   }
 
   public static void aimShooter(double position){
@@ -89,11 +96,12 @@ public class ShooterSubsystem extends SubsystemBase {
     shooterAimMotor.setNeutralMode(NeutralModeValue.Coast);
     shooterAimMotor.getConfigurator().apply(AimMotorConfig);
     shooterAimMotor.setPosition(0);*/
-    aimMotorPID.setP(0.054);//0.057
-    aimMotorPID.setFF(0.0053);
+    aimMotorPID.setP(0.0545);//0.057
+    aimMotorPID.setFF(0.00537);
     shooterAimMotor.setClosedLoopRampRate(0);
     shooterAimMotor.getEncoder().setPosition(0);
   }
+
 
   public static void intakeTilSight(){
   if(shooterNoteDetector.get() == true){
@@ -115,6 +123,8 @@ public class ShooterSubsystem extends SubsystemBase {
     SmartDashboard.putBoolean("Shooter Note Detector", shooterNoteDetector.get());
     SmartDashboard.putNumber("ShooterMotor1 Temp", shooterMotor1.getDeviceTemp().getValueAsDouble());
     SmartDashboard.putNumber("ShooterMotor2 Temp", shooterMotor2.getDeviceTemp().getValueAsDouble());
+    SmartDashboard.putNumber("Shooter1 Velocity", shooterMotor1.getVelocity().getValueAsDouble());
+    SmartDashboard.putNumber("Shooter2 Velocity", shooterMotor2.getVelocity().getValueAsDouble());
     SmartDashboard.putNumber("Shooter Aim Motor Temp", shooterAimMotor.getMotorTemperature());
     //SmartDashboard.putNumber("something", shooterAimMotor.getEncoder().getPosition());
   }

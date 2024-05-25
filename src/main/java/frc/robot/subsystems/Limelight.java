@@ -21,7 +21,7 @@ public class Limelight extends SubsystemBase {
   /** Creates a new Limelight. */
   public Limelight() {
     System.out.println("----------------------------Limelight Subsystem------------------------------");
-    Optional<Alliance> alliance = DriverStation.getAlliance();
+    /*Optional<Alliance> alliance = DriverStation.getAlliance();
     if (alliance.isPresent()) {
       if (alliance.get() == Alliance.Red) {
         LimelightHelpers.setPipelineIndex("limelight", 1);
@@ -29,7 +29,8 @@ public class Limelight extends SubsystemBase {
       if (alliance.get() == Alliance.Blue){
         LimelightHelpers.setPipelineIndex("limelight", 0);
       }
-    }
+    }*/
+    LimelightHelpers.setPipelineIndex("limelight", 0);
   }
 
 
@@ -48,7 +49,7 @@ public class Limelight extends SubsystemBase {
   }
 
   public static boolean InLongRange(){
-    if(DistanceFromTarget > 90 && DistanceFromTarget < 120){
+    if(DistanceFromTarget > 90 && DistanceFromTarget < 115){
       return true;
     }else{
       return false;

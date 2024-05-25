@@ -16,16 +16,16 @@
     },
     {
       "anchor": {
-        "x": 2.59859163592971,
-        "y": 4.303448834817898
+        "x": 2.63367409925703,
+        "y": 4.198201444835939
       },
       "prevControl": {
-        "x": 2.3363298974498705,
-        "y": 4.932877007169519
+        "x": 2.3714123607771906,
+        "y": 4.82762961718756
       },
       "nextControl": {
-        "x": 2.6570624081419094,
-        "y": 4.163118981508618
+        "x": 2.6921448714692295,
+        "y": 4.057871591526659
       },
       "isLocked": false,
       "linkedName": null
@@ -55,7 +55,7 @@
   "eventMarkers": [
     {
       "name": "IntakeToggle",
-      "waypointRelativePos": 0.1,
+      "waypointRelativePos": 0.15,
       "command": {
         "type": "parallel",
         "data": {
@@ -114,13 +114,13 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 180.0,
+    "rotation": 177.87890360333844,
     "rotateFast": false
   },
   "reversed": false,
   "folder": "MiddleAutos",
   "previewStartingState": {
-    "rotation": 180.0,
+    "rotation": -177.79740183823424,
     "velocity": 0
   },
   "useDefaultConstraints": false

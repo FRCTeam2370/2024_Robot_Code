@@ -4,6 +4,8 @@
 
 package frc.robot.commands.Shooter;
 
+import com.ctre.phoenix6.signals.NeutralModeValue;
+
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.subsystems.IntakeSubsystem;
 import frc.robot.subsystems.ShooterSubsystem;
@@ -24,7 +26,7 @@ public class ShooterIntakeTilSight extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    ShooterSubsystem.runShooter(-10);
+    ShooterSubsystem.runShooter(-15);
     IntakeSubsystem.BackwardIntake();
   }
 
@@ -34,6 +36,8 @@ public class ShooterIntakeTilSight extends Command {
     ShooterSubsystem.shooterMotor1.set(0);
     ShooterSubsystem.shooterMotor2.set(0);
     IntakeSubsystem.IntakeMotor.set(0);
+    //ShooterSubsystem.shooterMotor1.setNeutralMode(NeutralModeValue.Coast);
+    //ShooterSubsystem.shooterMotor2.setNeutralMode(NeutralModeValue.Coast);
   }
 
   // Returns true when the command should end.

@@ -23,8 +23,8 @@ public class ShootClose extends Command {
   @Override
   public void initialize() {
     ElevatorSubsystem.setElevator(0.1);
-    IntakeSubsystem.setIntakePostition(0.006);
-    ShooterSubsystem.aimShooter(3.35);
+    IntakeSubsystem.setIntakePostition(0.00154);
+    ShooterSubsystem.aimShooter(3.6);
     //ElevatorSubsystem.setElevator(0.1);
     //IntakeSubsystem.setIntakePostition(0.022);
     //ShooterSubsystem.aimShooter(3.35);
@@ -43,7 +43,12 @@ public class ShootClose extends Command {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
+    if(ShooterSubsystem.shooterAimMotor.getEncoder().getPosition() > 3){
       return true;
+    }else{
+      return false;
+    }
+      
     
     
   }

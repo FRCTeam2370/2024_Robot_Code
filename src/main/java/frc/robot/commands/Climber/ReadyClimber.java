@@ -21,7 +21,7 @@ public class ReadyClimber extends Command {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    IntakeSubsystem.storeIntake();
+    //IntakeSubsystem.storeIntake();
   }
 
   // Called every time the scheduler runs while the command is scheduled.
@@ -30,7 +30,7 @@ public class ReadyClimber extends Command {
     if(ClimberSubsystem.LowerLimitSwitch.get() == false){
       ClimberSubsystem.Climb(ClimberSubsystem.ClimberMotor.getPosition().getValueAsDouble());
     }else{
-      ClimberSubsystem.Climb(145);
+      ClimberSubsystem.Climb(140);//145
     }
   }
 

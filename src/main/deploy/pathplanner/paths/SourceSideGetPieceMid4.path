@@ -4,12 +4,12 @@
     {
       "anchor": {
         "x": 1.686447589419395,
-        "y": 4.572414386994017
+        "y": 4.443778688127177
       },
       "prevControl": null,
       "nextControl": {
         "x": 1.9904956049228335,
-        "y": 2.3037484251606686
+        "y": 2.1751127262938286
       },
       "isLocked": false,
       "linkedName": null
@@ -32,16 +32,16 @@
     },
     {
       "anchor": {
-        "x": 8.328727312725281,
-        "y": 2.596102286221667
+        "x": 8.46905716603456,
+        "y": 2.6896555217611855
       },
       "prevControl": {
-        "x": 8.72041324307749,
-        "y": 2.2636629671832376
+        "x": 8.860743096386768,
+        "y": 2.357216202722756
       },
       "nextControl": {
-        "x": 6.937122934074927,
-        "y": 3.7772118849081004
+        "x": 7.077452787384206,
+        "y": 3.870765120447619
       },
       "isLocked": false,
       "linkedName": null
@@ -49,27 +49,27 @@
     {
       "anchor": {
         "x": 4.785398516665979,
-        "y": 3.613493722713942
+        "y": 3.753823576023221
       },
       "prevControl": {
-        "x": 5.971086445197035,
-        "y": 4.030855873556874
+        "x": 5.78238771362489,
+        "y": 4.519368852259528
       },
       "nextControl": {
-        "x": 3.3236292113609864,
-        "y": 3.0989509272465843
+        "x": 3.475653219112706,
+        "y": 2.7481262939733857
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 1.861859906055994,
-        "y": 4.4671669970120575
+        "x": 1.686447589419395,
+        "y": 4.443778688127177
       },
       "prevControl": {
-        "x": 1.9671072960379534,
-        "y": 3.040480155034386
+        "x": 1.7916949794013546,
+        "y": 3.017091846149505
       },
       "nextControl": null,
       "isLocked": false,
@@ -79,15 +79,15 @@
   "rotationTargets": [
     {
       "waypointRelativePos": 1.8,
-      "rotationDegrees": -149.65243544179285,
+      "rotationDegrees": -153.3079304400754,
       "rotateFast": false
     }
   ],
   "constraintZones": [
     {
       "name": "SlowtoPiece",
-      "minWaypointRelativePos": 1.6,
-      "maxWaypointRelativePos": 2.1,
+      "minWaypointRelativePos": 1.75,
+      "maxWaypointRelativePos": 2.0,
       "constraints": {
         "maxVelocity": 2.0,
         "maxAcceleration": 2.0,
@@ -158,7 +158,7 @@
             {
               "type": "named",
               "data": {
-                "name": "ShootClose"
+                "name": "ShootFar"
               }
             },
             {
@@ -197,7 +197,7 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 149.53445508054008,
+    "rotation": 145.00797980144128,
     "rotateFast": false
   },
   "reversed": false,

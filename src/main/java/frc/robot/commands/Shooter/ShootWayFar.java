@@ -23,8 +23,8 @@ public class ShootWayFar extends Command {
   @Override
   public void initialize() {
     ElevatorSubsystem.setElevator(0.1);
-    IntakeSubsystem.setIntakePostition(0.01);
-    ShooterSubsystem.aimShooter(6.5);
+    IntakeSubsystem.setIntakePostition(0.0095);
+    ShooterSubsystem.aimShooter(5.45);
   }
 
   // Called every time the scheduler runs while the command is scheduled.
@@ -38,6 +38,6 @@ public class ShootWayFar extends Command {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return false;
+    return true;
   }
 }

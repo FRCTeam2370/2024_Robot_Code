@@ -2,10 +2,10 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 0.79769185179396,
-      "y": 6.537032333323926
+      "x": 1.2420697206066778,
+      "y": 5.578111669043852
     },
-    "rotation": -122.73522627210768
+    "rotation": 180.0
   },
   "command": {
     "type": "sequential",
@@ -26,13 +26,25 @@
         {
           "type": "path",
           "data": {
-            "pathName": "ScoreFirstAmpSide"
+            "pathName": "MiddleScoreFirstPiece"
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": "GetSecondPiceAmpSide"
+            "pathName": "MiddleSpitMid1GetMid2"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "FeedIntake"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "MiddleGetMiddlePiece"
           }
         },
         {
@@ -44,6 +56,6 @@
       ]
     }
   },
-  "folder": "AmpSide",
+  "folder": "MiddleAutos",
   "choreoAuto": false
 }

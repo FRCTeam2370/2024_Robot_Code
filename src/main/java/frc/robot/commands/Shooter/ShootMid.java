@@ -29,7 +29,7 @@ public class ShootMid extends Command {
     //IntakeSubsystem.setIntakePostition(0.013);
     //ShooterSubsystem.aimShooter(5.4);
     ElevatorSubsystem.setElevator(0.1);
-    IntakeSubsystem.setIntakePostition(0.01);
+    IntakeSubsystem.setIntakePostition(0.011);
     ShooterSubsystem.aimShooter(5);
   }
 

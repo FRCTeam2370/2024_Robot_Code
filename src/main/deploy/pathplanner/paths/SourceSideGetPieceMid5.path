@@ -3,41 +3,41 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 1.686447589419395,
-        "y": 4.572414386994017
+        "x": 1.5344235816676761,
+        "y": 4.4671669970120575
       },
       "prevControl": null,
       "nextControl": {
-        "x": 1.4876469638979162,
-        "y": 2.3973016607001876
+        "x": 1.3356229561461972,
+        "y": 2.2920542707182285
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 8.10653837831892,
-        "y": 0.7367317298737166
+        "x": 8.597692864901399,
+        "y": 0.45607202325515905
       },
       "prevControl": {
-        "x": 8.52979469390273,
-        "y": 0.7164559782289831
+        "x": 9.020949180485209,
+        "y": 0.43579627161042556
       },
       "nextControl": {
-        "x": 6.153614586431451,
-        "y": 0.8302849654132365
+        "x": 6.64476907301393,
+        "y": 0.5496252587946789
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 1.686447589419395,
-        "y": 4.572414386994017
+        "x": 1.5344235816676761,
+        "y": 4.4671669970120575
       },
       "prevControl": {
-        "x": 1.8150832882862347,
-        "y": 3.274363243883183
+        "x": 1.6630592805345157,
+        "y": 3.169115853901224
       },
       "nextControl": null,
       "isLocked": false,
@@ -54,7 +54,7 @@
   "constraintZones": [
     {
       "name": "SlowToPiece",
-      "minWaypointRelativePos": 0.75,
+      "minWaypointRelativePos": 0.85,
       "maxWaypointRelativePos": 0.9,
       "constraints": {
         "maxVelocity": 2.0,
@@ -130,14 +130,14 @@
     }
   ],
   "globalConstraints": {
-    "maxVelocity": 4.0,
-    "maxAcceleration": 4.0,
+    "maxVelocity": 4.4,
+    "maxAcceleration": 4.4,
     "maxAngularVelocity": 540.0,
     "maxAngularAcceleration": 720.0
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 149.53445508054008,
+    "rotation": 140.71059313749979,
     "rotateFast": false
   },
   "reversed": false,

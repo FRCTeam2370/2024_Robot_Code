@@ -32,11 +32,11 @@
     },
     {
       "anchor": {
-        "x": 2.0606605315774735,
+        "x": 1.4057878828008366,
         "y": 5.578111669043852
       },
       "prevControl": {
-        "x": 2.0665076087986933,
+        "x": 1.4116349600220564,
         "y": 5.589805823486292
       },
       "nextControl": null,
@@ -49,7 +49,7 @@
   "eventMarkers": [
     {
       "name": "Shoot",
-      "waypointRelativePos": 0.1,
+      "waypointRelativePos": 0.15,
       "command": {
         "type": "parallel",
         "data": {
@@ -91,7 +91,7 @@
             {
               "type": "named",
               "data": {
-                "name": "ShootFar"
+                "name": "ShootClose"
               }
             }
           ]

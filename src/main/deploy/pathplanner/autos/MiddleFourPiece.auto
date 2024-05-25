@@ -14,7 +14,7 @@
         {
           "type": "named",
           "data": {
-            "name": "ShootMid"
+            "name": "ShootClose"
           }
         },
         {
@@ -27,12 +27,6 @@
           "type": "path",
           "data": {
             "pathName": "StartAndScoreMiddle"
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "ShootFar"
           }
         },
         {

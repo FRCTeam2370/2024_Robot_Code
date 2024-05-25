@@ -14,7 +14,7 @@
         {
           "type": "named",
           "data": {
-            "name": "ShootMid"
+            "name": "ShootFar"
           }
         },
         {
@@ -32,7 +32,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "GetSecondPiceAmpSide"
+            "pathName": "AmpSideSqueezePastToMid1"
           }
         },
         {

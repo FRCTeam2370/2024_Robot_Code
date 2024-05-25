@@ -66,10 +66,10 @@ public class LEDSubsystem extends SubsystemBase {
   }
 
 
-  public static boolean isBlue(){
+  /*public static boolean isBlue(){
     return alliance.get() == DriverStation.Alliance.Blue;
   }
-
+*/
   public static void setBlue(){
     for(var i = 21; i < blinkahsBuffer.getLength(); i++){
       blinkahsBuffer.setRGB(i, 20, 0, 255);

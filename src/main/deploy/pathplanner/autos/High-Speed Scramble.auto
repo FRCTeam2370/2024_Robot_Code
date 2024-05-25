@@ -2,10 +2,10 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 0.400090600751002,
-      "y": 1.9997004096572308
+      "x": 1.5461177361101157,
+      "y": 1.9529237918874702
     },
-    "rotation": 180.0
+    "rotation": -179.04515874612784
   },
   "command": {
     "type": "sequential",
@@ -14,18 +14,24 @@
         {
           "type": "path",
           "data": {
-            "pathName": "GetToMid"
+            "pathName": "BackToMidField"
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": "Scorching"
+            "pathName": "Scramble"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "ScrambleBack"
           }
         }
       ]
     }
   },
-  "folder": "SorceSideAutos",
+  "folder": "NewSourceSideAutos",
   "choreoAuto": false
 }

@@ -52,7 +52,8 @@ public class ClimberSubsystem extends SubsystemBase {
 
   public static void resetClimber(){
     ClimberMotor.setNeutralMode(NeutralModeValue.Brake);
-    ClimberConfig.Slot0.kP = Constants.ClimberConstants.ClimberkP;
+    ClimberConfig.Slot0.kP = 0.5;//Constants.ClimberConstants.ClimberkP;
+    ClimberConfig.Slot0.kD = 0.1;
     ClimberConfig.ClosedLoopRamps.DutyCycleClosedLoopRampPeriod = Constants.ClimberConstants.ClimberClosedLoopRamp;
     ClimberMotor.getConfigurator().apply(ClimberConfig);
     ClimberMotor.setPosition(0);

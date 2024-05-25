@@ -23,8 +23,8 @@ public class ShootFar extends Command {
   @Override
   public void initialize() {
     ElevatorSubsystem.setElevator(0.1);
-    IntakeSubsystem.setIntakePostition(0.01);
-    ShooterSubsystem.aimShooter(5.4);//5.35
+    IntakeSubsystem.setIntakePostition(0.01154);
+    ShooterSubsystem.aimShooter(5.425);//5.35, //5.43
     //ElevatorSubsystem.setElevator(0.1);
     //IntakeSubsystem.setIntakePostition(0.026);
     //ShooterSubsystem.aimShooter(5.2);
@@ -43,8 +43,13 @@ public class ShootFar extends Command {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return true;
+    if(ShooterSubsystem.shooterAimMotor.getEncoder().getPosition() > 5){
+      return true;
+    }else{
+      return false;
+    }
     
-          
+
+
   }
 }

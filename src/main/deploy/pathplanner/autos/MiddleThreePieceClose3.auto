@@ -2,34 +2,15 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 0.7976918517959699,
-      "y": 4.5724143870011
+      "x": 1.2420697206066778,
+      "y": 5.578111669043852
     },
-    "rotation": 120.25643716446478
+    "rotation": 180.0
   },
   "command": {
     "type": "sequential",
     "data": {
       "commands": [
-        {
-          "type": "sequential",
-          "data": {
-            "commands": [
-              {
-                "type": "wait",
-                "data": {
-                  "waitTime": 1.0
-                }
-              }
-            ]
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "ShootClose"
-          }
-        },
         {
           "type": "named",
           "data": {
@@ -37,21 +18,27 @@
           }
         },
         {
-          "type": "path",
+          "type": "named",
           "data": {
-            "pathName": "ScoreAndExit"
+            "name": "ShootMid"
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": "DumpClosePiece"
+            "pathName": "StartAndScoreMiddleRetreat"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "FeedIntake"
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": "GetNextPieceAndScore"
+            "pathName": "MiddleGetFourthPieceRetreat"
           }
         },
         {
@@ -63,6 +50,6 @@
       ]
     }
   },
-  "folder": "SorceSideAutos",
+  "folder": "MiddleAutos",
   "choreoAuto": false
 }

@@ -7,10 +7,10 @@ package frc.robot.commands.Shooter;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.subsystems.ShooterSubsystem;
 
-public class ShootFast extends Command {
-  /** Creates a new Shoot. */
-  ShooterSubsystem mShooterSubsystem = new ShooterSubsystem();
-  public ShootFast() {
+public class ReverseShooter extends Command {
+  /** Creates a new ReverseShooter. */
+  private ShooterSubsystem mShooterSubsystem = new ShooterSubsystem();
+  public ReverseShooter() {
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(mShooterSubsystem);
   }
@@ -22,7 +22,7 @@ public class ShootFast extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    ShooterSubsystem.runShooter(-95);
+    ShooterSubsystem.runShooter(10);
   }
 
   // Called once the command ends or is interrupted.
@@ -36,4 +36,4 @@ public class ShootFast extends Command {
   public boolean isFinished() {
     return false;
   }
-}
+} 

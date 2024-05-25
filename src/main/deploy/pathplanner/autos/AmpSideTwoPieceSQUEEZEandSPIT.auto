@@ -14,7 +14,7 @@
         {
           "type": "named",
           "data": {
-            "name": "ShootMid"
+            "name": "ShootFar"
           }
         },
         {
@@ -32,7 +32,19 @@
         {
           "type": "path",
           "data": {
-            "pathName": "GetSecondPiceAmpSide"
+            "pathName": "Sneek"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "FeedIntake"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "GetandScoreMid2"
           }
         },
         {
