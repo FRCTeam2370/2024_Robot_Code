@@ -75,6 +75,7 @@ public class ClimberSubsystem extends SubsystemBase {
     SmartDashboard.putNumber("Climber Position", ClimberMotor.getPosition().getValueAsDouble());
     SmartDashboard.putBoolean("UpperLimit value", UpperLimitSwitch.get());
     SmartDashboard.putBoolean("LowerLimit value", LowerLimitSwitch.get());
+    SmartDashboard.putNumber("ClimberMotor Temp", ClimberMotor.getDeviceTemp().getValueAsDouble());
     
   }
 }

@@ -4,6 +4,8 @@
 
 package frc.robot.commands.Climber;
 
+import com.ctre.phoenix6.signals.NeutralModeValue;
+
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.commands.Intake.intakeToggle;
 import frc.robot.subsystems.ClimberSubsystem;
@@ -36,7 +38,9 @@ public class Climb extends Command {
 
   // Called once the command ends or is interrupted.
   @Override
-  public void end(boolean interrupted) {}
+  public void end(boolean interrupted) {
+    ClimberSubsystem.ClimberMotor.setNeutralMode(NeutralModeValue.Brake);
+  }
 
   // Returns true when the command should end.
   @Override

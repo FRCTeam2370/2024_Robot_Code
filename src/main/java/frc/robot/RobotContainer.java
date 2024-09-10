@@ -40,6 +40,7 @@ import frc.robot.commands.Shooter.PieceAmp;
 import frc.robot.commands.Shooter.ReverseShooter;
 import frc.robot.commands.Shooter.RunShooter;
 import frc.robot.commands.Shooter.RunShooterSlow;
+import frc.robot.commands.Shooter.ScoreAmp;
 import frc.robot.commands.Shooter.ScoreTrap;
 import frc.robot.commands.Shooter.Shoot;
 import frc.robot.commands.Shooter.ShootClose;
@@ -61,7 +62,25 @@ import frc.robot.subsystems.Limelight;
 import frc.robot.subsystems.ShooterSubsystem;
 
 public class RobotContainer {
-  public static double MaxSpeed = TunerConstants1.kSpeedAt12VoltsMps; // 6 meters per second desired top speed
+
+
+
+
+
+
+
+  //This value changes the max speed. Change this if it is too fast or sensitive
+  public static double MaxSpeed = 3.5;//TunerConstants1.kSpeedAt12VoltsMps; // 6 meters per second desired top speed
+
+
+
+
+
+
+
+
+
+
   private static double MaxAngularRate = 1.5 * Math.PI; // 3/4 of a rotation per second max angular velocity
 
   //private final SendableChooser<Command> autoChooser;
@@ -130,8 +149,8 @@ public class RobotContainer {
 
 
   private void configureBindings() {
-   SlewRateLimiter xLimiter = new SlewRateLimiter(5.8);
-   SlewRateLimiter yLimiter = new SlewRateLimiter(5.8);
+   SlewRateLimiter xLimiter = new SlewRateLimiter(6.5);
+   SlewRateLimiter yLimiter = new SlewRateLimiter(6.5);
 
     drivetrain.setDefaultCommand( // Drivetrain will execute this command periodically
         drivetrain.applyRequest(() -> drive.withVelocityX(yLimiter.calculate((-joystick.getLeftY() * MaxSpeed))) // Drive forward with
@@ -168,38 +187,64 @@ public class RobotContainer {
     //Start.toggleOnTrue(new ShooterToggle());
     //A.toggleOnTrue(new MoveIntake());
 
-    //lowers intake and starts running the intake. Will stop after collecting a note. Will retract after collecting a note
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /*
+     * Below are the commands and comments on what they do to control the robot
+     */
+
+
+
+
+    //Left bumper lowers intake and starts running the intake. Will stop after collecting a note. Will retract after collecting a note
     leftButton.toggleOnTrue(new intakeToggle());
 
-    //runs the intake in a way that would spit back out a piece
+    //Right bumper runs the intake in a way that would spit back out a piece
     righButton.onTrue(new ReverseIntake());
     
     //moves the elevator up and positions the shooter to score in the amp
-    X.toggleOnTrue(new PieceAmp());
+    X.toggleOnTrue(new ScoreAmp());
 
-    //moves the elevator down and positions the shooter to grab a piece
+    //M2 on the back of the shooter moves the elevator down and positions the shooter to grab a piece
     M2.onTrue(new ShootFar());//This value is a nice shooting value: 5 - 6
 
-    //Stores the shooter to a position where the robot can go under the stage
+    //B button Stores the shooter to a position where the robot can go under the stage
     B.toggleOnTrue(new StoreShooter());
 
 
-    //readies the shooter, intake, and elevator for close up shooting
+    //M1 on the back of the controller readies the shooter, intake, and elevator for close up shooting
     M1.onTrue(new ShootClose());
 
     //Runs the Shooter
     //downDpad.toggleOnTrue(new ShooterToggle());
 
-    //Sets the intake in the store position
+    //Y button sets the intake in the store position
     Y.onTrue(new StoreIntake());
 
+    //the right trigger runs the shooter at full speed
     trigger(driver, 3).whileTrue(new ShootFast());
     
+    //the left trigger runs the shooter slowly
     trigger(driver, 2).whileTrue(new RunShooterSlow());
 
+    //This auto aligns to the speaker
     A.toggleOnTrue(drivetrain.applyRequest(()-> drive.withVelocityX((-joystick.getLeftY() * MaxSpeed)* 0.75).withVelocityY((-joystick.getLeftX() * MaxSpeed)* 0.75).withRotationalRate(LimelightTurnPID.calculate(Limelight.txSlowlyShoot()))).alongWith(new LimelightLEDs()));
     //A.toggleOnTrue(new AlignToTag(mLimelight));
 
+    //left Dpad button runs the shooter in the oposite direction slowly
     leftDpad.whileTrue(new ReverseShooter());
     
     //This Command acts a bit wierd don't use it quite yet
@@ -218,6 +263,13 @@ public class RobotContainer {
     operatorB.onTrue(new ReadyClimber());
 
     operatorRightButton.whileTrue(new ResetIntakeManual());
+
+
+
+
+
+
+
 
   }
 

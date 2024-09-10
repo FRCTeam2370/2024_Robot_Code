@@ -160,6 +160,8 @@ public class IntakeSubsystem extends SubsystemBase {
     SmartDashboard.putNumber("Rollers Intake Pose", IntakeMotor.getPosition().getValueAsDouble());
     SmartDashboard.putNumber("Intake Absolute Pose", IntakePoseEncoder.getAbsolutePosition().getValueAsDouble());
     //SmartDashboard.putNumber("Position Intake Error", );
+    SmartDashboard.putNumber("PositionIntakeMotor Temp", PositionIntakeMotor.getDeviceTemp().getValueAsDouble());
+    SmartDashboard.putNumber("IntakeMotor Temp", IntakeMotor.getDeviceTemp().getValueAsDouble());
     
   }
 }
